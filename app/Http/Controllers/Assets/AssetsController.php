@@ -163,7 +163,7 @@ class AssetsController extends Controller
             $asset->assigned_to             = request('assigned_to', null);
             $asset->supplier_id             = request('supplier_id', null);
             $asset->requestable             = request('requestable', 0);
-            $asset->rtd_location_id         = request('rtd_location_id', null);
+            $asset->rtd_location_id         = request('rtd_location_id');
             $asset->byod                    = request('byod', 0);
 
             if (! empty($settings->audit_interval)) {
@@ -172,7 +172,7 @@ class AssetsController extends Controller
 
             // Set location_id to rtd_location_id ONLY if the asset isn't being checked out
             if (!request('assigned_user') && !request('assigned_asset') && !request('assigned_location')) {
-                $asset->location_id = $request->input('rtd_location_id', null);
+                $asset->location_id = $request->input('rtd_location_id');
             }
 
             if ($request->has('use_cloned_image')) {
