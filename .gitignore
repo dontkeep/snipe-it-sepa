@@ -2,6 +2,8 @@
 .DS_Store
 .env
 .env.testing
+.env.docker
+.env.dev.docker
 phpstan.neon
 .idea
 /bin/
