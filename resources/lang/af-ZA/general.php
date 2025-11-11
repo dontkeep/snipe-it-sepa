@@ -632,7 +632,7 @@ return [
     'use_cloned_image' => 'Clone image from original',
     'use_cloned_image_help' => 'You may clone the original image or you can upload a new one using the upload field below.',
     'use_cloned_no_image_help' => 'This item does not have an associated image and instead inherits from the model or category it belongs to. If you would like to use a specific image for this item, you can upload a new one below.',
-    'footer_credit' => '<a target="_blank" href="https://github.com/dontkeep" rel="noopener">Sepa-IT</a> is made with <i class="fa fa-heart" aria-hidden="true" style="color: #a94442; font-size: 10px" /></i><span class="sr-only">love</span> by <a href="https://loyaltytkp.com" rel="noopener">@loyaltytkp.com</a> <a href="https://bsky.app/profile/snipeitapp.com" rel="noopener">@snipeitapp.com</a>.',
+    'footer_credit' => '<a target="_blank" href="https://github.com/dontkeep" rel="noopener">Magnolia</a> is made with <i class="fa fa-heart" aria-hidden="true" style="color: #a94442; font-size: 10px" /></i><span class="sr-only">love</span> by <a href="https://loyaltytkp.com" rel="noopener">@loyaltytkp.com</a> and <a href="https://bsky.app/profile/snipeitapp.com" rel="noopener">@snipeitapp.com</a>.',
     'set_password' => 'Set a Password',
     'upload_deleted'        => 'Upload Deleted',
     'child_locations' => 'Child Locations',
