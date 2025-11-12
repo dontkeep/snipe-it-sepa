@@ -1,3 +1,9 @@
+/* 1. Load the core Bootstrap variables FIRST */
+@import "bootstrap-less/variables.less";
+
+/* 2. Load our custom AdminLTE variables SECOND */
+@import "variables.less";
+
 .skin-red
 .skin-purple
 .skin-blue
@@ -1364,4 +1370,63 @@ Radio toggle styles for permission settings and check/uncheck all
 
 .js-copy-link {
   color: grey;
+}
+
+/* ===============================================
+  CUSTOM STYLES: MAGNOLIA THEME
+===============================================
+*/
+
+/* --- Outline Dashboard Boxes --- */
+
+/* 1. Make all info-boxes white with a border */
+.info-box {
+  background: #ffffff !important; /* Force white background */
+  box-shadow: none !important;     /* Remove the AdminLTE shadow */
+  border-radius: 4px;             /* Add a modern, soft corner */
+  border: 2px solid;              /* Define the border */
+  margin-bottom: 20px;
+}
+
+/* 2. Make the text dark (it's white by default) */
+.info-box[class*='bg-'] .info-box-text,
+.info-box[class*='bg-'] .info-box-number {
+  color: #333333 !important;
+}
+
+/* * 3. Hijack the .bg-* classes to set the
+ * BORDER and ICON color using our new variables!
+ */
+
+.info-box.bg-light-blue { 
+  border-color: @light-blue; /* Uses our new pink */
+  .info-box-icon { color: @light-blue !important; }
+}
+.info-box.bg-aqua { 
+  border-color: @aqua; /* Uses our new light pink */
+  .info-box-icon { color: @aqua !important; }
+}
+.info-box.bg-green { 
+  border-color: @green; /* Uses our new leafy green */
+  .info-box-icon { color: @green !important; }
+}
+.info-box.bg-yellow { 
+  border-color: @yellow; /* Uses our new soft yellow */
+  .info-box-icon { color: @yellow !important; }
+}
+.info-box.bg-red { 
+  border-color: @red; 
+  .info-box-icon { color: @red !important; }
+}
+.info-box.bg-purple { 
+  border-color: @purple; /* Uses our new related pink */
+  .info-box-icon { color: @purple !important; }
+}
+.info-box.bg-orange { 
+  border-color: @orange;
+  .info-box-icon { color: @orange !important; }
+}
+.info-box.bg-maroon { 
+  border-color: @maroon;
+  .info-box-icon { color: @maroon !important; }
 }
