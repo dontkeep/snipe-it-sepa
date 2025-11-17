@@ -303,7 +303,11 @@ class StatuslabelsController extends Controller
     public function checkIfDeployable($id) : string
     {
         $statuslabel = Statuslabel::findOrFail($id);
-        if (($statuslabel->getStatuslabelType() == 'pending') || ($statuslabel->getStatuslabelType() == 'deployable')) {
+        // if (($statuslabel->getStatuslabelType() == 'pending') || ($statuslabel->getStatuslabelType() == 'deployable')) {
+        //     return '1';
+        // } Old Code
+
+        if (($statuslabel->getStatuslabelType() == 'deployable')) {
             return '1';
         }
 
