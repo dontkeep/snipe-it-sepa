@@ -112,7 +112,7 @@ class Asset extends Depreciable
         'expected_checkin'  => ['nullable', 'date'],
         'last_audit_date'   => ['nullable', 'date_format:Y-m-d H:i:s'],
         'next_audit_date'   => ['nullable', 'date'],
-        'location_id'       => ['required', 'exists:locations,id', 'fmcs_location'],
+        'location_id'       => ['nullable', 'exists:locations,id', 'fmcs_location'],
         'rtd_location_id'   => ['nullable', 'exists:locations,id', 'fmcs_location'],
         'purchase_date'     => ['nullable', 'date', 'date_format:Y-m-d'],
         'serial'            => ['nullable', 'string', 'unique_undeleted:assets,serial'],
