@@ -1,4 +1,3 @@
-
 @extends('layouts/edit-form', [
     'createText' => trans('admin/hardware/form.create'),
     'updateText' => trans('admin/hardware/form.update'),
@@ -19,8 +18,49 @@
 {{-- Page content --}}
 @section('inputFields')
     
-    @include ('partials.forms.edit.company-select', ['translated_name' => trans('general.company'), 'fieldname' => 'company_id'])
+    <!-- Company -->
+    <div class="form-group {{ $errors->has('company_id') ? ' has-error' : '' }}">
+        <label for="company_id" class="col-md-3 control-label">
+            {{ trans('general.company') }}
+        </label>
+        <div class="col-md-8 required">
+            @if (($snipeSettings->full_multiple_companies_support=='1') && (!Auth::user()->isSuperUser()))
+                <!-- full company support is enabled and this user isn't a superadmin -->
+                <select class="js-data-ajax" disabled="true" data-endpoint="companies" data-placeholder="{{ trans('general.select_company') }}" name="company_id" style="width: 100%" id="company_select" aria-label="company_id" required>
+                    @if ($company_id = old('company_id', (isset($item)) ? $item->company_id : ''))
+                        <option value="{{ $company_id }}" selected="selected" role="option" aria-selected="true"  role="option">
+                            {{ (\App\Models\Company::find($company_id)) ? \App\Models\Company::find($company_id)->name : '' }}
+                        </option>
+                    @else
+                        <option value="" role="option">{{ trans('general.select_company') }}</option>
+                    @endif
+                </select>
+            @else
+                <!-- full company support is enabled or this user is a superadmin -->
+                <select class="js-data-ajax" data-endpoint="companies" data-placeholder="{{ trans('general.select_company') }}" name="company_id" style="width: 100%" id="company_select" required>
+                    @if ($company_id = old('company_id', (isset($item)) ? $item->company_id : ''))
+                        <option value="{{ $company_id }}" selected="selected">
+                            {{ (\App\Models\Company::find($company_id)) ? \App\Models\Company::find($company_id)->name : '' }}
+                        </option>
+                    @else
+                        <option value="" role="option">{{ trans('general.select_company') }}</option>
+                    @endif
+                </select>
+            @endif
+        </div>
+        {!! $errors->first('company_id', '<div class="col-md-8 col-md-offset-3"><span class="alert-msg"><i class="fas fa-times" aria-hidden="true"></i> :message</span></div>') !!}
+    </div>
 
+    <!-- Asset Name -->
+    <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
+        <label for="name" class="col-md-3 control-label">
+            {{ trans('admin/hardware/form.name') }}
+        </label>
+        <div class="col-md-7 col-sm-12 required">
+            <input class="form-control" type="text" name="name" id="name" value="{{ old('name', $item->name) }}" required>
+            {!! $errors->first('name', '<span class="alert-msg"><i class="fas fa-times"></i> :message</span>') !!}
+        </div>
+    </div>
 
   <!-- Asset Tag -->
   <div class="form-group {{ $errors->has('asset_tag') ? ' has-error' : '' }}">
@@ -71,7 +111,12 @@
     @endif
 
     @include ('partials.forms.edit.notes')
-    @include ('partials.forms.edit.location-select', ['translated_name' => trans('admin/hardware/form.default_location'), 'fieldname' => 'rtd_location_id', 'help_text' => trans('general.rtd_location_help'), 'required' => 'true'])
+    @include ('partials.forms.edit.location-select', [
+        'translated_name' => trans('admin/hardware/form.default_location'), 
+        'fieldname' => 'rtd_location_id', 
+        'help_text' => trans('general.rtd_location_help'), 
+        'required' => 'true'
+    ])
     @include ('partials.forms.edit.requestable', ['requestable_text' => trans('admin/hardware/general.requestable')])
 
 
@@ -111,7 +156,6 @@
             </x-form-legend>
 
             <div id="optional_details" class="col-md-12" style="display:none">
-                @include ('partials.forms.edit.name', ['translated_name' => trans('admin/hardware/form.name')])
                 @include ('partials.forms.edit.warranty')
                 @include ('partials.forms.edit.datepicker', ['translated_name' => trans('admin/hardware/form.expected_checkin'),'fieldname' => 'expected_checkin'])
                 @include ('partials.forms.edit.datepicker', ['translated_name' => trans('general.next_audit_date'),'fieldname' => 'next_audit_date', 'help_text' => trans('general.next_audit_date_help')])
@@ -162,8 +206,6 @@
                 </div> <!-- end order details -->
             </fieldset>
         </div><!-- end col-md-12 col-sm-12-->
-    </div><!-- end col-md-12 col-sm-12-->
-    </div><!-- end col-md-12 col-sm-12-->
    
 @stop
 
