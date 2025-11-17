@@ -566,7 +566,7 @@ return [
     'copy_to_clipboard' => '複製到剪貼簿',
     'copied' => '已複製!',
     'status_compatibility' => 'If assets are already assigned, they cannot be changed to a non-deployable status type and this value change will be skipped.',
-    'rtd_location_help' => 'This is the location of the asset when it is not checked out and is required for all items.',
+    'rtd_location_help' => 'This is the location of the asset.',
     'item_not_found' => ':item_type ID :id 不存在或已刪除',
     'action_permission_denied' => '您沒有權限做 :action :item_type ID :id',
     'action_permission_generic' => '您沒有權限做 :action this :item_type',
