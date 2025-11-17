@@ -236,7 +236,7 @@
                   <label class="col-md-3 control-label" for="email">{{ trans('admin/users/table.email') }} </label>
                   <div class="col-md-6">
                         <input class="form-control" type="email" name="email" id="email" maxlength="191" value="{{ old('email', $user->email) }}" autocomplete="off"
-                          readonly onfocus="this.removeAttribute('readonly');" {{  (Helper::checkIfRequired($user, 'email')) ? ' required' : '' }}{!! (!Gate::allows('canEditAuthFields', $user)) || ((!Gate::allows('editableOnDemo')) && ($user->id)) ? ' style="cursor: not-allowed" disabled ' : '' !!}>
+                          readonly onfocus="this.removeAttribute('readonly');" required{!! (!Gate::allows('canEditAuthFields', $user)) || ((!Gate::allows('editableOnDemo')) && ($user->id)) ? ' style="cursor: not-allowed" disabled ' : '' !!}>
 
                           @cannot('canEditAuthFields', $user)
                               <!-- authed user is an admin or regular user and is trying to edit someone higher -->
@@ -284,28 +284,13 @@
                   @endif
 
                   
-                  @include ('partials.forms.edit.image-upload', ['fieldname' => 'avatar', 'image_path' => app('users_upload_path')])
+                  @include ('partials.forms.edit.image-upload', [
+                    'fieldname' => 'avatar', 
+                    'image_path' => app('users_upload_path'),
+                    'required' => true  // Tambahkan ini
+                ])
 
-
-                  <!-- begin optional disclosure arrow stuff -->
-
-                      <div class="col-md-12">
-
-                      <fieldset name="optional_details">
-
-                          <x-form-legend>
-                              <h4 id="optional_details" class="remember-toggle optional_details">
-                                  <x-icon type="caret-right" class="fa-fw" id="toggle-arrow-optional_details" />
-                                  {{ trans('admin/hardware/form.optional_infos') }}
-                              </h4>
-                          </x-form-legend>
-
-                          <div class="col-md-12 toggle-content-optional_details" style="display:none">
-
-                              <!-- everything here should be what is considered optional -->
-                              <br>
-
-                              <!-- Display Name -->
+                <!-- Display Name -->
                               <div class="form-group {{ $errors->has('display_name') ? 'has-error' : '' }}">
                                   <label class="col-md-3 control-label" for="display_name">{{ trans('admin/users/table.display_name') }}</label>
                                   <div class="col-md-6">
@@ -316,28 +301,51 @@
                                               name="display_name"
                                               id="display_name"
                                               value="{{ old('display_name', $user->getRawOriginal('display_name')) }}"
+                                              required
                                       />
                                       {!! $errors->first('display_name', '<span class="alert-msg" aria-hidden="true">:message</span>') !!}
                                   </div>
                               </div>
 
 
-                              <!-- Company -->
-                              @if ((Gate::allows('canEditAuthFields', $user)) && (\App\Models\Company::canManageUsersCompanies()))
-                                  @include ('partials.forms.edit.company-select', ['translated_name' => trans('general.select_company'), 'fieldname' => 'company_id'])
-                              @else
-                                  @if ($user->company)
-                                      <div class="form-group">
-                                          <label class="col-md-3 control-label" for="locale">{{ trans('general.company') }}</label>
-                                          <div class="col-md-6">
-                                              <p class="form-control-static">
-                                                  {{ $user->company ? $user->company->name : '' }}
-                                              </p>
-                                          </div>
-                                      </div>
-                                  @endif
-                              @endif
+                                <!-- Company -->
+                                @if ((Gate::allows('canEditAuthFields', $user)) && (\App\Models\Company::canManageUsersCompanies()))
+                                    @include ('partials.forms.edit.company-select', [
+                                        'translated_name' => trans('general.select_company'), 
+                                        'fieldname' => 'company_id',
+                                        'required' => true  // Tambahkan ini
+                                    ])
+                                @else
+                                    @if ($user->company)
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label required" for="locale">{{ trans('general.company') }} <sup>*</sup></label>
+                                            <div class="col-md-6">
+                                                <p class="form-control-static">
+                                                    {{ $user->company ? $user->company->name : '' }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endif
 
+
+                  <!-- begin optional disclosure arrow stuff -->
+
+                    <div class="col-md-12">
+
+                        <fieldset name="optional_details">
+
+                          <x-form-legend>
+                              <h4 id="optional_details" class="remember-toggle optional_details">
+                                  <x-icon type="caret-right" class="fa-fw" id="toggle-arrow-optional_details" />
+                                  {{ trans('admin/hardware/form.optional_infos') }}
+                              </h4>
+                          </x-form-legend>
+
+                          <div class="col-md-12 toggle-content-optional_details" style="display: none;">
+
+                              <!-- everything here should be what is considered optional -->
+                              <br>
 
                               <!-- language -->
                               <div class="form-group {{ $errors->has('locale') ? 'has-error' : '' }}">
@@ -386,12 +394,25 @@
                               <!-- Manager -->
                               @include ('partials.forms.edit.user-select', ['translated_name' => trans('admin/users/table.manager'), 'fieldname' => 'manager_id'])
 
-                              <!--  Department -->
-                              @include ('partials.forms.edit.department-select', ['translated_name' => trans('general.department'), 'fieldname' => 'department_id'])
+                              <!-- Department -->
+                              @include ('partials.forms.edit.department-select', [
+                                'translated_name' => trans('general.department'), 
+                                'fieldname' => 'department_id'
+                              ])
 
-                              @include ('partials.forms.edit.datepicker', ['translated_name' => trans('general.start_date'), 'fieldname' => 'start_date', 'item' => $user])
+                              @include ('partials.forms.edit.datepicker', [
+                                'translated_name' => trans('general.start_date'), 
+                                'fieldname' => 'start_date', 
+                                'item' => $user,
+                                'required' => true  // Tambahkan ini
+                              ])
 
-                              @include ('partials.forms.edit.datepicker', ['translated_name' => trans('general.end_date'), 'fieldname' => 'end_date', 'item' => $user])
+                              @include ('partials.forms.edit.datepicker', [
+                                'translated_name' => trans('general.end_date'), 
+                                'fieldname' => 'end_date', 
+                                'item' => $user,
+                                'required' => true  // Tambahkan ini
+                              ])
 
                               <!-- VIP checkbox -->
 
@@ -436,8 +457,11 @@
 
 
                               <!-- Location -->
-                              @include ('partials.forms.edit.location-select', ['translated_name' => trans('general.location'), 'fieldname' => 'location_id'])
-
+                                @include ('partials.forms.edit.location-select', [
+                                    'translated_name' => trans('general.location'), 
+                                    'fieldname' => 'location_id'
+                                ])
+                                
                               <!-- Phone -->
                               <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
                                   <label class="col-md-3 control-label" for="phone">{{ trans('admin/users/table.phone') }}</label>
@@ -451,7 +475,7 @@
                               <div class="form-group {{ $errors->has('mobile') ? 'has-error' : '' }}">
                                   <label class="col-md-3 control-label" for="phone">{{ trans('admin/users/table.mobile') }}</label>
                                   <div class="col-md-6">
-                                      <input class="form-control" type="text" name="mobile" id="mobile" value="{{ old('mobile', $user->mobile) }}" maxlength="191" />
+                                      <input class="form-control" type="text" name="mobile" id="mobile" value="{{ old('mobile', $user->mobile) }}" maxlength="191"  />
                                       {!! $errors->first('mobile', '<span class="alert-msg" aria-hidden="true">:message</span>') !!}
                                   </div>
                               </div>
@@ -507,7 +531,7 @@
                               <div class="form-group{{ $errors->has('zip') ? ' has-error' : '' }}">
                                   <label class="col-md-3 control-label" for="zip">{{ trans('general.zip') }}</label>
                                   <div class="col-md-3 text-right">
-                                      <input class="form-control" type="text" name="zip" id="zip" value="{{ old('zip', $user->zip) }}" maxlength="10" />
+                                      <input class="form-control" type="text" name="zip" id="zip" value="{{ old('zip', $user->zip) }}" maxlength="10"  />
                                       {!! $errors->first('zip', '<span class="alert-msg" aria-hidden="true">:message</span>') !!}
                                   </div>
                               </div>
@@ -516,7 +540,7 @@
                               <div class="form-group{!! $errors->has('notes') ? ' has-error' : '' !!}">
                                   <label for="notes" class="col-md-3 control-label">{{ trans('admin/users/table.notes') }}</label>
                                   <div class="col-md-6">
-                                      <textarea class="form-control" rows="5" id="notes" name="notes">{{ old('notes', $user->notes) }}</textarea>
+                                      <textarea class="form-control" rows="5" id="notes" name="notes" >{{ old('notes', $user->notes) }}</textarea>
                                       {!! $errors->first('notes', '<span class="alert-msg" aria-hidden="true"><i class="fas fa-times" aria-hidden="true"></i> :message</span>') !!}
                                   </div>
                               </div>
@@ -744,10 +768,6 @@ $(document).ready(function() {
 
         });
     });
-
-
-
-
 });
 </script>
 
