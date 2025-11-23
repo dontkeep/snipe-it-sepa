@@ -76,7 +76,7 @@ dir="{{ Helper::determineLanguageDirection() }}">
         .sidebar {
             padding-bottom: 0px;
         }
-        
+
         .search-box {
             position: relative;
             background: #f2f5fa;
@@ -147,18 +147,11 @@ dir="{{ Helper::determineLanguageDirection() }}">
                     
                     <div class="nav navbar-nav navbar-left">
                         <!-- Pindahkan Sidebar Toggle Button di sini (setelah logo) -->
-                        <a href="#" style="color: white; margin-left: 15px;" class="sidebar-toggle btn btn-white" data-toggle="push-menu"
+                        <a href="#" style="color: white; margin-left: 15px;" class="sidebar-toggle hidden-xs btn btn-white " data-toggle="push-menu"
                             role="button">
                             <span class="sr-only">{{ trans('general.toggle_navigation') }}</span>
                         </a>
-                        <div class="left-navblock">
-                            <!-- Sidebar Toggle Button untuk Mobile -->
-                            {{-- <a href="#" style="float:left" class="sidebar-toggle-mobile visible-xs btn" data-toggle="push-menu"
-                            role="button">
-                                <span class="sr-only">{{ trans('general.toggle_navigation') }}</span>
-                                <x-icon type="nav-toggle" />
-                            </a> --}}
-                            
+                        <div class="left-navblock">                           
                             @if ($snipeSettings->brand == '3')
                                 <a class="logo navbar-brand no-hover" href="{{ config('app.url') }}">
                                     @if ($snipeSettings->logo!='')
@@ -443,11 +436,12 @@ dir="{{ Helper::determineLanguageDirection() }}">
                         </ul>
                     </div>
                 </nav>
-                {{-- <a href="#" style="float:left" class="sidebar-toggle-mobile visible-xs btn" data-toggle="push-menu"
-                   role="button">
+                <!-- Sidebar Toggle Button untuk Mobile -->
+                <a href="#" style="background-color: #ecf0f5; float:left; margin:10px;" class="sidebar-toggle-mobile visible-xs btn" data-toggle="push-menu"
+                role="button">
                     <span class="sr-only">{{ trans('general.toggle_navigation') }}</span>
                     <x-icon type="nav-toggle" />
-                </a> --}}
+                </a>
                 <!-- Sidebar toggle button-->
             </header>
 
