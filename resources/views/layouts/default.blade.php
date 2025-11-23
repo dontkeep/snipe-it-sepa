@@ -88,36 +88,42 @@ dir="{{ Helper::determineLanguageDirection() }}">
 
 </head>
 
-@if (($snipeSettings) && ($snipeSettings->allow_user_skin==1) && Auth::check() && Auth::user()->present()->skin != '')
-    <body class="sidebar-mini skin-{{ $snipeSettings->skin!='' ? Auth::user()->present()->skin : 'blue' }} {{ (session('menu_state')!='open') ? 'sidebar-mini sidebar-collapse' : ''  }}">
+    @if (($snipeSettings) && ($snipeSettings->allow_user_skin==1) && Auth::check() && Auth::user()->present()->skin != '')
+        <body class="sidebar skin-{{ $snipeSettings->skin!='' ? Auth::user()->present()->skin : 'blue' }} {{ (session('menu_state')!='open') ? 'sidebar-collapse' : ''  }}">
     @else
-        <body class="sidebar-mini skin-{{ $snipeSettings->skin!='' ? $snipeSettings->skin : 'blue' }} {{ (session('menu_state')!='open') ? 'sidebar-mini sidebar-collapse' : ''  }}">
-        @endif
+        <body class="sidebar skin-{{ $snipeSettings->skin!='' ? $snipeSettings->skin : 'blue' }} {{ (session('menu_state')!='open') ? 'sidebar-collapse' : ''  }}">
+    @endif
 
 
-        <a class="skip-main" href="#main">{{ trans('general.skip_to_main_content') }}</a>
+    <a class="skip-main" href="#main">{{ trans('general.skip_to_main_content') }}</a>
         <div class="wrapper">
 
             <header class="main-header">
 
                 <!-- Logo -->
-
-
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top" role="navigation">
-                    <!-- Sidebar toggle button above the compact sidenav -->
-                    <a href="#" style="color: white" class="sidebar-toggle btn btn-white" data-toggle="push-menu"
-                       role="button">
-                        <span class="sr-only">{{ trans('general.toggle_navigation') }}</span>
-                    </a>
+                    
                     <div class="nav navbar-nav navbar-left">
+                        <!-- Pindahkan Sidebar Toggle Button di sini (setelah logo) -->
+                        <a href="#" style="color: white; margin-left: 15px;" class="sidebar-toggle btn btn-white" data-toggle="push-menu"
+                            role="button">
+                            <span class="sr-only">{{ trans('general.toggle_navigation') }}</span>
+                        </a>
                         <div class="left-navblock">
+                            <!-- Sidebar Toggle Button untuk Mobile -->
+                            {{-- <a href="#" style="float:left" class="sidebar-toggle-mobile visible-xs btn" data-toggle="push-menu"
+                            role="button">
+                                <span class="sr-only">{{ trans('general.toggle_navigation') }}</span>
+                                <x-icon type="nav-toggle" />
+                            </a> --}}
+                            
                             @if ($snipeSettings->brand == '3')
                                 <a class="logo navbar-brand no-hover" href="{{ config('app.url') }}">
                                     @if ($snipeSettings->logo!='')
                                         <img class="navbar-brand-img"
-                                             src="{{ Storage::disk('public')->url($snipeSettings->logo) }}"
-                                             alt="{{ $snipeSettings->site_name }} logo">
+                                            src="{{ Storage::disk('public')->url($snipeSettings->logo) }}"
+                                            alt="{{ $snipeSettings->site_name }} logo">
                                     @endif
                                     {{ $snipeSettings->site_name }}
                                 </a>
@@ -125,8 +131,8 @@ dir="{{ Helper::determineLanguageDirection() }}">
                                 <a class="logo navbar-brand no-hover" href="{{ config('app.url') }}">
                                     @if ($snipeSettings->logo!='')
                                         <img class="navbar-brand-img"
-                                             src="{{ Storage::disk('public')->url($snipeSettings->logo) }}"
-                                             alt="{{ $snipeSettings->site_name }} logo">
+                                            src="{{ Storage::disk('public')->url($snipeSettings->logo) }}"
+                                            alt="{{ $snipeSettings->site_name }} logo">
                                     @endif
                                     <span class="sr-only">{{ $snipeSettings->site_name }}</span>
                                 </a>
@@ -141,47 +147,6 @@ dir="{{ Helper::determineLanguageDirection() }}">
                     <!-- Navbar Right Menu -->
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
-                            @can('index', \App\Models\Asset::class)
-                                <li aria-hidden="true"{!! (request()->is('hardware*') ? ' class="active"' : '') !!}>
-                                    <a href="{{ url('hardware') }}" {{$snipeSettings->shortcuts_enabled == 1 ? "accesskey=1" : ''}} tabindex="-1" data-tooltip="true" data-placement="bottom" data-title="{{ trans('general.assets') }}">
-                                        <x-icon type="assets" class="fa-fw" />
-                                        <span class="sr-only">{{ trans('general.assets') }}</span>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('view', \App\Models\License::class)
-                                <li aria-hidden="true"{!! (request()->is('licenses*') ? ' class="active"' : '') !!}>
-                                    <a href="{{ route('licenses.index') }}" {{$snipeSettings->shortcuts_enabled == 1 ? "accesskey=2" : ''}} tabindex="-1" data-tooltip="true" data-placement="bottom" data-title="{{ trans('general.licenses') }}">
-                                        <x-icon type="licenses" class="fa-fw" />
-                                        <span class="sr-only">{{ trans('general.licenses') }}</span>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('index', \App\Models\Accessory::class)
-                                <li aria-hidden="true"{!! (request()->is('accessories*') ? ' class="active"' : '') !!}>
-                                    <a href="{{ route('accessories.index') }}" {{$snipeSettings->shortcuts_enabled == 1 ? "accesskey=3" : ''}} tabindex="-1" data-tooltip="true" data-placement="bottom" data-title="{{ trans('general.accessories') }}">
-                                        <x-icon type="accessories" class="fa-fw" />
-                                        <span class="sr-only">{{ trans('general.accessories') }}</span>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('index', \App\Models\Consumable::class)
-                                <li aria-hidden="true"{!! (request()->is('consumables*') ? ' class="active"' : '') !!}>
-                                    <a href="{{ url('consumables') }}" {{$snipeSettings->shortcuts_enabled == 1 ? "accesskey=4" : ''}} tabindex="-1" data-tooltip="true" data-placement="bottom" data-title="{{ trans('general.consumables') }}">
-                                        <x-icon type="consumables" class="fa-fw" />
-                                        <span class="sr-only">{{ trans('general.consumables') }}</span>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('view', \App\Models\Component::class)
-                                <li aria-hidden="true"{!! (request()->is('components*') ? ' class="active"' : '') !!}>
-                                    <a href="{{ route('components.index') }}" {{$snipeSettings->shortcuts_enabled == 1 ? "accesskey=5" : ''}} tabindex="-1" data-tooltip="true" data-placement="bottom" data-title="{{ trans('general.components') }}">
-                                        <x-icon type="components" class="fa-fw" />
-                                        <span class="sr-only">{{ trans('general.components') }}</span>
-                                    </a>
-                                </li>
-                            @endcan
-
                             @can('index', \App\Models\Asset::class)
                                 <li>
                                     <form class="navbar-form navbar-left form-horizontal" role="search"
@@ -438,11 +403,11 @@ dir="{{ Helper::determineLanguageDirection() }}">
                         </ul>
                     </div>
                 </nav>
-                <a href="#" style="float:left" class="sidebar-toggle-mobile visible-xs btn" data-toggle="push-menu"
+                {{-- <a href="#" style="float:left" class="sidebar-toggle-mobile visible-xs btn" data-toggle="push-menu"
                    role="button">
                     <span class="sr-only">{{ trans('general.toggle_navigation') }}</span>
                     <x-icon type="nav-toggle" />
-                </a>
+                </a> --}}
                 <!-- Sidebar toggle button-->
             </header>
 

@@ -23051,6 +23051,9 @@ h4,
 .content-header > h1 {
   font-family: 'Poppins', sans-serif !important;
 }
+.main-header > .navbar {
+  margin-left: 0px;
+}
 
 
 /*# sourceMappingURL=app.css.map*/
@@ -24876,6 +24879,9 @@ h4,
 .page-title,
 .content-header > h1 {
   font-family: 'Poppins', sans-serif !important;
+}
+.main-header > .navbar {
+  margin-left: 0px;
 }
 
 
