@@ -130,13 +130,13 @@ dir="{{ Helper::determineLanguageDirection() }}">
 </head>
 
     @if (($snipeSettings) && ($snipeSettings->allow_user_skin==1) && Auth::check() && Auth::user()->present()->skin != '')
-        <body class="sidebar skin-{{ $snipeSettings->skin!='' ? Auth::user()->present()->skin : 'blue' }} {{ (session('menu_state')!='open') ? 'sidebar-collapse' : ''  }}">
+        <body class="skin-{{ $snipeSettings->skin!='' ? Auth::user()->present()->skin : 'blue' }} {{ (session('menu_state')!='open') ? 'sidebar-collapse' : ''  }}">
     @else
-        <body class="sidebar skin-{{ $snipeSettings->skin!='' ? $snipeSettings->skin : 'blue' }} {{ (session('menu_state')!='open') ? 'sidebar-collapse' : ''  }}">
+        <body class="skin-{{ $snipeSettings->skin!='' ? $snipeSettings->skin : 'blue' }} {{ (session('menu_state')!='open') ? 'sidebar-collapse' : ''  }}">
     @endif
 
 
-    <a class="skip-main" href="#main">{{ trans('general.skip_to_main_content') }}</a>
+        <a class="skip-main" href="#main">{{ trans('general.skip_to_main_content') }}</a>
         <div class="wrapper">
 
             <header class="main-header">
@@ -148,16 +148,16 @@ dir="{{ Helper::determineLanguageDirection() }}">
                     <div class="nav navbar-nav navbar-left">
                         <!-- Pindahkan Sidebar Toggle Button di sini (setelah logo) -->
                         <a href="#" style="color: white; margin-left: 15px;" class="sidebar-toggle hidden-xs btn btn-white " data-toggle="push-menu"
-                            role="button">
-                            <span class="sr-only">{{ trans('general.toggle_navigation') }}</span>
-                        </a>
-                        <div class="left-navblock">                           
+                       role="button">
+                        <span class="sr-only">{{ trans('general.toggle_navigation') }}</span>
+                    </a>
+                        <div class="left-navblock">
                             @if ($snipeSettings->brand == '3')
                                 <a class="logo navbar-brand no-hover" href="{{ config('app.url') }}">
                                     @if ($snipeSettings->logo!='')
                                         <img class="navbar-brand-img"
-                                            src="{{ Storage::disk('public')->url($snipeSettings->logo) }}"
-                                            alt="{{ $snipeSettings->site_name }} logo">
+                                             src="{{ Storage::disk('public')->url($snipeSettings->logo) }}"
+                                             alt="{{ $snipeSettings->site_name }} logo">
                                     @endif
                                     {{ $snipeSettings->site_name }}
                                 </a>
@@ -165,8 +165,8 @@ dir="{{ Helper::determineLanguageDirection() }}">
                                 <a class="logo navbar-brand no-hover" href="{{ config('app.url') }}">
                                     @if ($snipeSettings->logo!='')
                                         <img class="navbar-brand-img"
-                                            src="{{ Storage::disk('public')->url($snipeSettings->logo) }}"
-                                            alt="{{ $snipeSettings->site_name }} logo">
+                                             src="{{ Storage::disk('public')->url($snipeSettings->logo) }}"
+                                             alt="{{ $snipeSettings->site_name }} logo">
                                     @endif
                                     <span class="sr-only">{{ $snipeSettings->site_name }}</span>
                                 </a>
@@ -184,7 +184,7 @@ dir="{{ Helper::determineLanguageDirection() }}">
                             @can('index', \App\Models\Asset::class)
                                 <li>
                                     <form class="navbar-form navbar-left form-horizontal" role="search"
-                                        action="{{ route('findbytag/hardware') }}" method="get">
+                                          action="{{ route('findbytag/hardware') }}" method="get">
 
                                         <div class="search-box">
                                             <input type="text"
@@ -193,11 +193,11 @@ dir="{{ Helper::determineLanguageDirection() }}">
                                                 placeholder="{{ trans('general.lookup_by_tag') }}">
 
                                             <button type="submit" id="topSearchButton">
-                                                <x-icon type="search" />
-                                            </button>
+                                                    <x-icon type="search" />
+                                                </button>
 
                                             <input type="hidden" name="topsearch" value="true">
-                                        </div>
+                                            </div>
 
                                     </form>
                                 </li>
@@ -438,7 +438,7 @@ dir="{{ Helper::determineLanguageDirection() }}">
                 </nav>
                 <!-- Sidebar Toggle Button untuk Mobile -->
                 <a href="#" style="background-color: #ecf0f5; float:left; margin:10px;" class="sidebar-toggle-mobile visible-xs btn" data-toggle="push-menu"
-                role="button">
+                   role="button">
                     <span class="sr-only">{{ trans('general.toggle_navigation') }}</span>
                     <x-icon type="nav-toggle" />
                 </a>
