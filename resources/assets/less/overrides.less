@@ -1446,6 +1446,15 @@ h1, h2, h3, h4, .page-title, .content-header > h1 {
     padding-bottom: 0px;
 }
 
+/* =============================================
+   ENHANCED SEARCH BOX STYLES
+   ============================================= */
+
+/*
+ * Component: Search Box
+ * ------------------
+ */
+
 .search-box {
     position: relative;
     background: #f2f5fa;
@@ -1481,3 +1490,513 @@ h1, h2, h3, h4, .page-title, .content-header > h1 {
 .search-box button:hover svg {
     opacity: 0.8;
 }
+
+/* =============================================
+   ENHANCED SIDEBAR STYLES
+   ============================================= */
+
+// Main Sidebar transitions
+.main-sidebar {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// Responsive improvements dengan breakpoint fixed
+@media (max-width: 767px) {
+  .main-sidebar {
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    transform: translateX(-100%);
+  }
+  
+  .sidebar-open .main-sidebar {
+    transform: translateX(0);
+  }
+}
+
+.sidebar {
+  padding-bottom: 10px;
+}
+
+// Remove border from form
+.sidebar-form {
+  input:focus {
+    border-color: transparent;
+  }
+}
+
+// Sidebar user panel
+.user-panel {
+  position: relative;
+  width: 100%;
+  padding: 15px 10px;
+  overflow: hidden;
+  border-bottom: 1px solid #34495e; // Darker border
+  
+  > .image > img {
+    width: 100%;
+    max-width: 45px;
+    height: auto;
+    border-radius: 50%; // Circular image
+  }
+  
+  > .info {
+    padding: 5px 5px 5px 15px;
+    line-height: 1;
+    position: absolute;
+    left: 55px;
+    
+    > p {
+      font-weight: 600;
+      margin-bottom: 9px;
+      color: #ecf0f1; // Light text color
+      font-size: 14px;
+    }
+    
+    > a {
+      text-decoration: none;
+      padding-right: 5px;
+      margin-top: 3px;
+      font-size: 11px;
+      color: #bdc3c7; // Gray text color
+      
+      > .fa,
+      > .ion,
+      > .glyphicon {
+        margin-right: 3px;
+      }
+      
+      &:hover {
+        color: #ecf0f1;
+      }
+    }
+  }
+}
+
+// Improved user panel
+.user-panel {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  
+  > .info {
+    > p {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    
+    > a {
+      font-size: 11px;
+      opacity: 0.8;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        opacity: 1;
+        transform: translateX(2px);
+      }
+    }
+  }
+}
+
+// Sidebar menu - UPDATED STYLES
+.sidebar-menu {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  
+  //First Level
+  > li {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    
+    > a {
+      padding: 12px 15px;
+      display: block;
+      color: #b8c7ce;
+      border-left: 3px solid transparent;
+      transition: all 0.3s ease;
+      
+      > .fa,
+      > .glyphicon,
+      > .ion {
+        width: 20px;
+        color: rgba(255,255,255,0.7);
+      }
+      
+      &:hover {
+        color: #fff;
+        background-color: rgba(255,255,255,0.1);
+        border-left-color: #3c8dbc;
+        
+        > .fa,
+        > .glyphicon,
+        > .ion {
+          color: #fff;
+        }
+      }
+    }
+    
+    // Active state
+    &.active > a {
+      color: #fff;
+      background-color: rgba(255,255,255,0.1);
+      border-left-color: #3c8dbc;
+      
+      > .fa,
+      > .glyphicon,
+      > .ion {
+        color: #fff;
+      }
+    }
+    
+    .label,
+    .badge {
+      margin-right: 5px;
+      font-size: 10px;
+      padding: 3px 6px;
+    }
+    
+    .badge {
+      margin-top: 3px;
+      background-color: rgba(255,255,255,0.2);
+      color: #fff;
+    }
+  }
+  
+  // Header style
+  li.header {
+    padding: 10px 25px 10px 15px;
+    font-size: 12px;
+    color: #4b646f;
+    background: #1a2226;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  // Treeview arrows
+  li > a > .fa-angle-left,
+  li > a > .pull-right-container > .fa-angle-left {
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin-right: 10px;
+    color: rgba(255,255,255,0.7);
+  }
+  
+  li > a > .fa-angle-left {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    margin-top: -8px;
+  }
+
+  .menu-open {
+    > a > .fa-angle-left,
+    > a > .pull-right-container > .fa-angle-left {
+      color: #fff;
+    }
+    
+    > a {
+      background-color: rgba(255,255,255,0.05);
+    }
+  }
+  
+  .active > .treeview-menu {
+    display: block;
+    background-color: rgba(0,0,0,0.2);
+  }
+}
+
+// Enhanced Sidebar Collapse Styles
+.sidebar-menu {
+  > li {
+    // Improved active state with better visual indicators
+    &.active {
+      > a {
+        background: linear-gradient(90deg, rgba(59, 130, 246, 0.15) 0%, transparent 100%);
+        box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.1);
+        
+        // Add a subtle glow effect for active items
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 3px;
+          border-radius: 0 2px 2px 0;
+        }
+      }
+    }
+
+    // Enhanced treeview collapse/expand indicators
+    &.treeview {
+      > a {
+        position: relative;
+        
+        > .fa-angle-left,
+        > .pull-right-container > .fa-angle-left {
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          transform-origin: center;
+          margin-right: 8px;
+        }
+      }
+
+      // When menu is open
+      &.menu-open {
+        > a {
+          background-color: rgba(255, 255, 255, 0.08);
+          
+          > .fa-angle-left,
+          > .pull-right-container > .fa-angle-left {
+            transform: rotate(-90deg);
+          }
+        }
+
+        // Enhanced treeview menu appearance
+        > .treeview-menu {
+          background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%);
+          border-left: 2px solid rgba(60, 141, 188, 0.3);
+          margin-left: 8px;
+          border-radius: 0 0 4px 4px;
+        }
+      }
+    }
+  }
+
+  // Enhanced treeview menu items
+  .treeview-menu {
+    > li {
+      > a {
+        transition: all 0.2s ease;
+        position: relative;
+        
+        // Dot indicator - hidden by default, only show on hover
+        &::before {
+          content: '';
+          position: absolute;
+          left: 20px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 4px;
+          height: 4px;
+          background-color: #8aa4af;
+          border-radius: 50%;
+          transition: all 0.2s ease;
+          opacity: 0; // Hidden by default
+        }
+
+        &:hover {
+          padding-left: 45px;
+          background-color: rgba(255, 255, 255, 0.08);
+          
+          &::before {
+            opacity: 1; // Show dot on hover
+            background-color: #3c8dbc;
+            transform: translateY(-50%) scale(1.2);
+          }
+        }
+      }
+
+      // Active state for treeview items
+      &.active > a {
+        background-color: rgba(60, 141, 188, 0.15);
+        color: #fff;
+        padding-left: 35px; // Reset padding for active state
+        
+        // No dot for active state by default
+        &::before {
+          opacity: 0;
+        }
+        
+        // Show dot only when active item is hovered
+        &:hover {
+          padding-left: 45px;
+          
+          &::before {
+            opacity: 1;
+            background-color: #3c8dbc;
+            transform: translateY(-50%) scale(1.2);
+          }
+        }
+        
+        > .fa,
+        > .glyphicon,
+        > .ion {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+// Improved sidebar headers
+.sidebar-menu {
+  li.header {
+    background: linear-gradient(90deg, #1a2226 0%, #2c3b41 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 12px 25px 12px 15px;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 15px;
+      right: 15px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+    }
+  }
+}
+
+// Enhanced badge styles
+.sidebar-menu {
+  .badge {
+    font-size: 9px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 10px;
+    min-width: 20px;
+    text-align: center;
+    
+    // Different badge colors based on context
+    &.badge-success {
+      background-color: #00a65a;
+    }
+    
+    &.badge-warning {
+      background-color: #f39c12;
+    }
+    
+    &.badge-danger {
+      background-color: #dd4b39;
+    }
+    
+    &.badge-info {
+      background-color: #00c0ef;
+    }
+  }
+}
+
+// Divider in sidebar
+.sidebar-menu .divider {
+  height: 1px;
+  background-color: rgba(255,255,255,0.1);
+  margin: 8px 15px;
+}
+
+// Badge styles in sidebar
+.sidebar-menu .badge {
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;
+  font-weight: normal;
+  
+  &.badge-secondary {
+    background-color: #6c757d;
+  }
+}
+
+// Icon colors for different statuses
+.text-blue { color: #3498db !important; }
+.text-green { color: #2ecc71 !important; }
+.text-orange { color: #e67e22 !important; }
+.text-red { color: #e74c3c !important; }
+.text-yellow { color: #f1c40f !important; }
+.text-grey { color: #95a5a6 !important; }
+
+// Additional modern styles
+.sidebar-menu {
+  > li {
+    > a {
+      position: relative;
+      overflow: hidden;
+      
+      // Add subtle hover effect
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        transition: left 0.5s;
+      }
+      
+      &:hover:after {
+        left: 100%;
+      }
+    }
+  }
+}
+
+// Skin-specific sidebar accent colors
+.skin-blue .sidebar-menu > li.active > a,
+.skin-blue .sidebar-menu > li > a:hover {
+  border-left-color: #3c8dbc;
+}
+
+.skin-red .sidebar-menu > li.active > a,
+.skin-red .sidebar-menu > li > a:hover {
+  border-left-color: #dd4b39;
+}
+
+.skin-green .sidebar-menu > li.active > a,
+.skin-green .sidebar-menu > li > a:hover {
+  border-left-color: #00a65a;
+}
+
+.skin-purple .sidebar-menu > li.active > a,
+.skin-purple .sidebar-menu > li > a:hover {
+  border-left-color: #605ca8;
+}
+
+.skin-yellow .sidebar-menu > li.active > a,
+.skin-yellow .sidebar-menu > li > a:hover {
+  border-left-color: #f39c12;
+}
+
+// Responsive improvements
+@media (max-width: @screen-xs-max) {
+  .main-sidebar {
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// Animation for menu items
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.sidebar-menu > li {
+  animation: slideIn 0.3s ease forwards;
+  
+  // Stagger animation for child items
+  &:nth-child(1) { animation-delay: 0.05s; }
+  &:nth-child(2) { animation-delay: 0.1s; }
+  &:nth-child(3) { animation-delay: 0.15s; }
+  &:nth-child(4) { animation-delay: 0.2s; }
+  &:nth-child(5) { animation-delay: 0.25s; }
+  &:nth-child(6) { animation-delay: 0.3s; }
+  &:nth-child(7) { animation-delay: 0.35s; }
+  &:nth-child(8) { animation-delay: 0.4s; }
+  &:nth-child(9) { animation-delay: 0.45s; }
+  &:nth-child(10) { animation-delay: 0.5s; }
+  &:nth-child(11) { animation-delay: 0.55s; }
+  &:nth-child(12) { animation-delay: 0.6s; }
+  // Continue as needed...
+}
+
+// Focus styles for accessibility
+// .sidebar-menu > li > a:focus {
+//   outline: 2px solid #3c8dbc;
+//   outline-offset: -2px;
+// }
