@@ -1342,6 +1342,40 @@ h4,
 .main-header > .navbar {
   margin-left: 0px;
 }
+.sidebar {
+  padding-bottom: 0px;
+}
+.search-box {
+  position: relative;
+  background: #f2f5fa;
+  border-radius: 12px;
+  padding: 6px 40px 6px 12px;
+}
+.search-box input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  outline: none;
+}
+.search-box button {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+.search-box button svg {
+  width: 18px;
+  height: 18px;
+  opacity: 0.6;
+}
+.search-box button:hover svg {
+  opacity: 0.8;
+}
 
 
 /*# sourceMappingURL=overrides.css.map*/
