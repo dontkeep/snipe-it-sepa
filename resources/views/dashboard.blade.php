@@ -280,12 +280,14 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="chart-responsive">
-                            <canvas id="statusPieChart" height="260"></canvas>
-                        </div> <!-- ./chart-responsive -->
-                    </div> <!-- /.col -->
-                </div> <!-- /.row -->
-            </div><!-- /.box-body -->
-        </div> <!-- /.box -->
+                            <div class="chart-container">
+                                <canvas id="statusPieChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
   </div>
 
 </div> <!--/row-->
@@ -505,56 +507,122 @@
         <script src="{{ url(mix('js/dist/Chart.min.js')) }}"></script>
 <script nonce="{{ csrf_token() }}">
     // ---------------------------
-    // - ASSET STATUS CHART -
+    // - ASSET STATUS DONUT CHART -
     // ---------------------------
-      var pieChartCanvas = $("#statusPieChart").get(0).getContext("2d");
-      var pieChart = new Chart(pieChartCanvas);
-      var ctx = document.getElementById("statusPieChart");
-      var pieOptions = {
-              legend: {
-                  position: 'top',
-                  responsive: true,
-                  maintainAspectRatio: true,
-              },
-              tooltips: {
-                callbacks: {
-                    label: function(tooltipItem, data) {
-                        counts = data.datasets[0].data;
-                        total = 0;
-                        for(var i in counts) {
-                            total += counts[i];
+    
+    $(document).ready(function() {
+        initializeDonutChart();
+    });
+
+    function initializeDonutChart() {
+        var donutChartCanvas = document.getElementById("statusPieChart");
+        
+        if (!donutChartCanvas) {
+            console.error('Canvas element not found');
+            return;
+        }
+
+        var ctx = donutChartCanvas.getContext("2d");
+        
+        // Clear any existing chart
+        if (window.statusDonutChartInstance) {
+            window.statusDonutChartInstance.destroy();
+        }
+
+        var donutOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '60%', // Ini yang membuat bentuk donut
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 20,
+                        usePointStyle: true,
+                        fontFamily: 'inherit',
+                        font: {
+                            size: 12
                         }
-                        prefix = data.labels[tooltipItem.index] || '';
-                        return prefix+" "+Math.round(counts[tooltipItem.index]/total*100)+"%";
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            var label = context.label || '';
+                            var value = context.raw;
+                            var total = context.dataset.data.reduce((a, b) => a + b, 0);
+                            var percentage = Math.round((value / total) * 100);
+                            return label + ': ' + value + ' (' + percentage + '%)';
+                        }
                     }
                 }
-              }
-          };
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
+        };
 
-      $.ajax({
-          type: 'GET',
-          url: '{{ (\App\Models\Setting::getSettings()->dash_chart_type == 'name') ? route('api.statuslabels.assets.byname') : route('api.statuslabels.assets.bytype') }}',
-          headers: {
-              "X-Requested-With": 'XMLHttpRequest',
-              "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content')
-          },
-          dataType: 'json',
-          success: function (data) {
-              var myPieChart = new Chart(ctx,{
-                  type   : 'pie',
-                  data   : data,
-                  options: pieOptions
-              });
-          },
-          error: function (data) {
-              // window.location.reload(true);
-          },
-      });
-        var last = document.getElementById('statusPieChart').clientWidth;
-        addEventListener('resize', function() {
-        var current = document.getElementById('statusPieChart').clientWidth;
-        if (current != last) location.reload();
-        last = current;
+        $.ajax({
+            type: 'GET',
+            url: '{{ (\App\Models\Setting::getSettings()->dash_chart_type == 'name') ? route('api.statuslabels.assets.byname') : route('api.statuslabels.assets.bytype') }}',
+            headers: {
+                "X-Requested-With": 'XMLHttpRequest',
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content')
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (!data || !data.datasets || !data.datasets.length) {
+                    console.error('Invalid chart data received');
+                    showChartError();
+                    return;
+                }
+
+                // Enhance dataset untuk donut chart
+                var enhancedData = {
+                    labels: data.labels,
+                    datasets: data.datasets.map(dataset => ({
+                        ...dataset,
+                        borderWidth: 2,
+                        borderColor: '#fff',
+                        borderRadius: 2,
+                        spacing: 2
+                    }))
+                };
+
+                // Create donut chart instance
+                window.statusDonutChartInstance = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: enhancedData,
+                    options: donutOptions
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error('Error loading chart data:', error);
+                showChartError();
+            }
+        });
+
+        function showChartError() {
+            var errorHtml = '<div class="alert alert-info text-center" style="margin: 20px;">' +
+                           '<i class="fa fa-info-circle"></i> ' +
+                           'Chart data is currently unavailable.' +
+                           '</div>';
+            $('.chart-responsive').html(errorHtml);
+        }
+    }
+
+    // Handle window resize dengan debounce
+    var resizeTimer;
+    $(window).on('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            if (window.statusDonutChartInstance) {
+                window.statusDonutChartInstance.destroy();
+                initializeDonutChart();
+            }
+        }, 250);
     });
+
 </script>
 @endpush

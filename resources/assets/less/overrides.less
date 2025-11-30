@@ -2061,7 +2061,7 @@ h1, h2, h3, h4, .page-title, .content-header > h1 {
     color: white;
 }
 
-/* color for every box */
+/* color for every small box */
 .dashboard.bg-teal {
     background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%) !important;
 }
@@ -2105,4 +2105,698 @@ h1, h2, h3, h4, .page-title, .content-header > h1 {
     .dashboard.small-box .inner p {
         font-size: 14px;
     }
+}
+
+/* =============================================
+   ENHANCED BOX & BOX HEADER STYLES
+   ============================================= */
+
+/* Override box & box-header */
+.box {
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    border: 1px solid #eaeaea;
+    margin-bottom: 20px;
+    background: #fff;
+}
+
+.box-default {
+    border-top: 3px solid #d2d6de;
+}
+
+.box.box-default {
+    border-top-color: #d2d6de;
+}
+
+.box-header {
+    border-bottom: 1px solid #f4f4f4;
+    padding: 15px 20px;
+    background: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.box-header.with-border {
+    border-bottom: 1px solid #eaeaea;
+}
+
+.box-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.box-tools {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+.box-tools .btn-box-tool {
+    background: transparent;
+    border: none;
+    color: #97a0b3;
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.box-tools .btn-box-tool:hover {
+    background: #f8f9fa;
+    color: #333;
+}
+
+.box-body {
+    padding: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Table styling dalam box */
+.box .table-responsive {
+    border-radius: 6px;
+}
+
+.box .table {
+    margin-bottom: 0;
+}
+
+.box .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+.box .table > thead > tr > th {
+    border-bottom: 1px solid #eaeaea;
+    font-weight: 600;
+    color: #555;
+    padding: 12px 8px;
+}
+
+.box .table > tbody > tr > td {
+    padding: 10px 8px;
+    border-color: #f0f0f0;
+}
+
+/* Chart box styling - FIXED */
+.box .chart-responsive {
+    position: relative;
+    height: 260px;
+    width: 100%;
+}
+
+/* Fix untuk canvas chart */
+#statusPieChart {
+    width: 100% !important;
+    height: 260px !important;
+    max-width: 100%;
+    display: block;
+}
+
+/* Container untuk chart yang responsive */
+.chart-container {
+    position: relative;
+    height: 260px;
+    width: 100%;
+}
+
+/* Button dalam box */
+.box .btn {
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.box .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,123,255,0.3);
+}
+
+/* Progress bar styling */
+.box .progress {
+    border-radius: 10px;
+    height: 12px;
+    background: #f0f0f0;
+    margin: 10px 0;
+}
+
+.box .progress-bar {
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .box {
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+    
+    .box-header {
+        padding: 12px 15px;
+    }
+    
+    .box-body {
+        padding: 15px;
+    }
+    
+    .box-title {
+        font-size: 16px;
+    }
+    
+    /* Fix chart untuk mobile */
+    .box .chart-responsive {
+        height: 220px;
+    }
+    
+    #statusPieChart {
+        height: 220px !important;
+    }
+}
+
+/* Styling untuk box dengan border top berwarna */
+.box.box-default {
+    border-top: 3px solid #d2d6de;
+}
+
+/* Jika ingin warna yang berbeda untuk berbagai jenis box */
+.box-primary {
+    border-top-color: #3c8dbc !important;
+}
+
+.box-success {
+    border-top-color: #00a65a !important;
+}
+
+.box-info {
+    border-top-color: #00c0ef !important;
+}
+
+.box-warning {
+    border-top-color: #f39c12 !important;
+}
+
+.box-danger {
+    border-top-color: #dd4b39 !important;
+}
+
+/* =============================================
+   PIE TO DONUT CHART STYLES
+   ============================================= */
+
+/* Chart box styling */
+.box .chart-responsive {
+    position: relative;
+    height: 260px;
+    width: 100%;
+}
+
+/* Fix untuk canvas chart donut */
+#statusPieChart {
+    width: 100% !important;
+    height: 260px !important;
+    max-width: 100%;
+    display: block;
+}
+
+/* Container untuk chart yang responsive */
+.chart-container {
+    position: relative;
+    height: 260px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Legend styling untuk donut chart */
+.chart-legend {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0 0;
+    text-align: center;
+}
+
+.chart-legend li {
+    display: inline-block;
+    margin: 0 10px 5px 0;
+    font-size: 12px;
+}
+
+.chart-legend li span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    border-radius: 2px;
+}
+
+/* Responsive adjustments untuk donut chart */
+@media (max-width: 768px) {
+    .box .chart-responsive {
+        height: 220px;
+    }
+    
+    #statusPieChart {
+        height: 220px !important;
+    }
+    
+    .chart-legend li {
+        margin: 0 5px 5px 0;
+        font-size: 11px;
+    }
+}
+
+/* =============================================
+   SEARCH INPUT STYLES - SLIGHTLY ROUNDED
+   ============================================= */
+
+/* Override untuk search input */
+.form-control {
+    border-radius: 6px !important;
+    border: 1px solid #d2d6de;
+    padding: 8px 15px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #3c8dbc;
+    box-shadow: 0 0 0 0.2rem rgba(60, 141, 188, 0.25);
+    outline: none;
+}
+
+/* Khusus untuk search input di sidebar */
+.sidebar-form {
+    border-radius: 6px !important;
+    border: 1px solid #d2d6de;
+}
+
+.sidebar-form .form-control {
+    border-radius: 6px 0 0 6px !important;
+    border: none;
+    box-shadow: none;
+}
+
+.sidebar-form .btn {
+    border-radius: 0 6px 6px 0 !important;
+    border: none;
+    background: transparent;
+}
+
+.sidebar-form .form-control:focus {
+    box-shadow: none;
+}
+
+/* Search input dalam navbar */
+.navbar-nav .form-control {
+    border-radius: 6px;
+    border: 1px solid #d2d6de;
+    padding: 6px 12px;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* Input group dengan rounded sedikit */
+.input-group .form-control:first-child {
+    border-radius: 6px 0 0 6px !important;
+}
+
+.input-group .form-control:last-child {
+    border-radius: 0 6px 6px 0 !important;
+}
+
+.input-group .input-group-addon:first-child {
+    border-radius: 6px 0 0 6px !important;
+}
+
+.input-group .input-group-addon:last-child {
+    border-radius: 0 6px 6px 0 !important;
+}
+
+/* Search input dengan icon */
+.input-group .form-control {
+    border-radius: 0 !important;
+}
+
+.input-group:not(.has-feedback) .form-control:first-child {
+    border-radius: 6px 0 0 6px !important;
+}
+
+.input-group:not(.has-feedback) .form-control:last-child {
+    border-radius: 0 6px 6px 0 !important;
+}
+
+/* Placeholder styling */
+.form-control::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* Hover effects */
+.form-control:hover {
+    border-color: #b5b5b5;
+}
+
+/* Size variations */
+.form-control-sm {
+    border-radius: 4px !important;
+    padding: 4px 12px;
+    font-size: 12px;
+}
+
+.form-control-lg {
+    border-radius: 8px !important;
+    padding: 12px 20px;
+    font-size: 16px;
+}
+
+/* Disabled state */
+.form-control:disabled {
+    background-color: #f8f9fa;
+    border-color: #e9ecef;
+    border-radius: 6px !important;
+}
+
+/* Error state */
+.form-control.error {
+    border-color: #dd4b39;
+    border-radius: 6px !important;
+}
+
+.form-control.error:focus {
+    border-color: #dd4b39;
+    box-shadow: 0 0 0 0.2rem rgba(221, 75, 57, 0.25);
+}
+
+/* Success state */
+.form-control.success {
+    border-color: #00a65a;
+    border-radius: 6px !important;
+}
+
+.form-control.success:focus {
+    border-color: #00a65a;
+    box-shadow: 0 0 0 0.2rem rgba(0, 166, 90, 0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .form-control {
+        border-radius: 4px !important;
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    
+    .navbar-nav .form-control {
+        border-radius: 4px;
+        padding: 4px 10px;
+        font-size: 12px;
+        margin-top: 6px;
+    }
+}
+
+/* Custom search input dengan icon di dalam */
+.search-input-container {
+    position: relative;
+}
+
+.search-input-container .form-control {
+    padding-left: 35px;
+    border-radius: 6px !important;
+}
+
+.search-input-container .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    z-index: 3;
+}
+
+/* Untuk input group dengan button */
+.input-group-rounded .form-control {
+    border-radius: 6px 0 0 6px !important;
+}
+
+.input-group-rounded .input-group-btn .btn {
+    border-radius: 0 6px 6px 0 !important;
+    border-left: none;
+}
+
+/* Full rounded input group */
+.input-group-full-rounded .form-control {
+    border-radius: 6px !important;
+    border-right: none;
+}
+
+.input-group-full-rounded .input-group-btn .btn {
+    border-radius: 0 6px 6px 0 !important;
+    margin-left: -1px;
+}
+
+/* =============================================
+   MODAL STYLES - CONSISTENT WITH BOX DESIGN
+   ============================================= */
+
+/* Modal header styling to match box-header */
+.modal-header {
+    border-bottom: 1px solid #eaeaea;
+    padding: 15px 20px;
+    background: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.modal-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Modal body styling to match box-body */
+.modal-body {
+    padding: 20px;
+    background: #fff;
+}
+
+/* Modal content styling to match box */
+.modal-content {
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    border: 1px solid #eaeaea;
+    background: #fff;
+}
+
+/* Modal footer styling */
+.modal-footer {
+    border-top: 1px solid #f4f4f4;
+    padding: 15px 20px;
+    background: #fff;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Close button styling */
+.modal-header .close {
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #97a0b3;
+    opacity: 1;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.modal-header .close:hover {
+    background: #f8f9fa;
+    color: #333;
+    opacity: 1;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-backdrop.show {
+    opacity: 0.5;
+}
+
+/* Specific styling for different modal sizes */
+.modal-sm .modal-content {
+    max-width: 300px;
+}
+
+.modal-lg .modal-content {
+    max-width: 900px;
+}
+
+.modal-xl .modal-content {
+    max-width: 1140px;
+}
+
+/* Form elements inside modal */
+.modal-body .form-group {
+    margin-bottom: 15px;
+}
+
+.modal-body .form-control {
+    border-radius: 6px;
+    border: 1px solid #d2d6de;
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+.modal-body .form-control:focus {
+    border-color: #3c8dbc;
+    box-shadow: 0 0 0 0.2rem rgba(60, 141, 188, 0.25);
+}
+
+.modal-body label {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Buttons in modal footer */
+.modal-footer .btn {
+    border-radius: 6px;
+    font-weight: 500;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+}
+
+// .modal-footer .btn-primary {
+//     background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+//     border: none;
+// }
+
+.modal-footer .btn-default {
+    background: #f8f9fa;
+    border: 1px solid #d2d6de;
+    color: #333;
+}
+
+.modal-footer .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Table styling inside modal */
+.modal-body .table {
+    margin-bottom: 0;
+}
+
+.modal-body .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+.modal-body .table > thead > tr > th {
+    border-bottom: 1px solid #eaeaea;
+    font-weight: 600;
+    color: #555;
+    padding: 12px 8px;
+}
+
+.modal-body .table > tbody > tr > td {
+    padding: 10px 8px;
+    border-color: #f0f0f0;
+}
+
+/* Alert messages inside modal */
+.modal-body .alert {
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border: none;
+}
+
+/* Progress bars inside modal */
+.modal-body .progress {
+    border-radius: 10px;
+    height: 12px;
+    background: #f0f0f0;
+    margin: 10px 0;
+}
+
+.modal-body .progress-bar {
+    border-radius: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .modal-content {
+        border-radius: 8px;
+        margin: 10px;
+    }
+    
+    .modal-header {
+        padding: 12px 15px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    
+    .modal-body {
+        padding: 15px;
+    }
+    
+    .modal-footer {
+        padding: 12px 15px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    
+    .modal-title {
+        font-size: 16px;
+    }
+}
+
+/* Animation for modal appearance */
+// .modal.fade .modal-dialog {
+//     transform: translate(0, -25%);
+//     transition: transform 0.3s ease-out;
+// }
+
+// .modal.show .modal-dialog {
+//     transform: translate(0, 0);
+// }
+
+/* Specific modal types */
+.modal-danger .modal-header {
+    border-top: 3px solid #dd4b39;
+}
+
+.modal-warning .modal-header {
+    border-top: 3px solid #f39c12;
+}
+
+.modal-success .modal-header {
+    border-top: 3px solid #00a65a;
+}
+
+.modal-info .modal-header {
+    border-top: 3px solid #00c0ef;
+}
+
+.modal-primary .modal-header {
+    border-top: 3px solid #3c8dbc;
+}
+
+/* Fullscreen modal adjustments */
+.modal-fullscreen .modal-content {
+    border-radius: 0;
+    border: none;
+}
+
+.modal-fullscreen .modal-header {
+    border-radius: 0;
+}
+
+.modal-fullscreen .modal-footer {
+    border-radius: 0;
 }
