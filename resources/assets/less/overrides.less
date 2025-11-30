@@ -2000,3 +2000,109 @@ h1, h2, h3, h4, .page-title, .content-header > h1 {
 //   outline: 2px solid #3c8dbc;
 //   outline-offset: -2px;
 // }
+
+/* =============================================
+   ENHANCED SIDEBAR STYLES
+   ============================================= */
+
+/* small box dashboard */
+.dashboard.small-box {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard.small-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.dashboard.small-box .inner {
+    padding: 15px;
+}
+
+.dashboard.small-box .inner h3 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+}
+
+.dashboard.small-box .inner p {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.dashboard.small-box .icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 70px;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+.dashboard.small-box:hover .icon {
+    opacity: 0.5;
+    transform: scale(1.1);
+}
+
+.dashboard.small-box .small-box-footer {
+    background: rgba(0,0,0,0.1);
+    color: rgba(255,255,255,0.8);
+    padding: 8px 15px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.dashboard.small-box:hover .small-box-footer {
+    background: rgba(0,0,0,0.2);
+    color: white;
+}
+
+/* color for every box */
+.dashboard.bg-teal {
+    background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%) !important;
+}
+
+.dashboard.bg-maroon {
+    background: linear-gradient(135deg, #d81b60 0%, #c2185b 100%) !important;
+}
+
+.dashboard.bg-orange {
+    background: linear-gradient(135deg, #fd7e14 0%, #e6550d 100%) !important;
+}
+
+.dashboard.bg-purple {
+    background: linear-gradient(135deg, #6f42c1 0%, #5e35b1 100%) !important;
+}
+
+.dashboard.bg-yellow {
+    background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%) !important;
+}
+
+.dashboard.bg-yellow .inner h3,
+.dashboard.bg-yellow .inner p,
+.dashboard.bg-yellow .small-box-footer {
+    color: #333 !important;
+}
+
+.dashboard.bg-light-blue {
+    background: linear-gradient(135deg, #17a2b8 0%, #138496 100%) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dashboard.small-box .icon {
+        font-size: 50px;
+    }
+    
+    .dashboard.small-box .inner h3 {
+        font-size: 24px;
+    }
+    
+    .dashboard.small-box .inner p {
+        font-size: 14px;
+    }
+}
