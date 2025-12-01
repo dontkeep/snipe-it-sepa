@@ -1044,7 +1044,7 @@ dir="{{ Helper::determineLanguageDirection() }}">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" style="color: black" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         <h5 class="modal-title" id="mobileSearchModalLabel">
@@ -1060,16 +1060,25 @@ dir="{{ Helper::determineLanguageDirection() }}">
                                     id="mobileTagSearch"
                                     name="assetTag"
                                     placeholder="{{ trans('general.lookup_by_tag') }}"
+                                    autocomplete="off"
                                     autofocus>
                                 <span class="input-group-btn">
                                     <button type="submit" class="btn btn-primary">
                                         <x-icon type="search" />
-                                        {{ trans('general.search') }}
+                                        <span class="sr-only">{{ trans('general.search') }}</span>
                                     </button>
                                 </span>
                             </div>
                             <input type="hidden" name="topsearch" value="true">
                         </form>
+                        
+                        <!-- Optional: Recent searches -->
+                        <div class="recent-searches mt-3" style="display: none;">
+                            <h6>{{ trans('Recent searches') }}</h6>
+                            <div class="recent-tags">
+                                <!-- Recent tags will be populated by JavaScript -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1364,16 +1373,71 @@ dir="{{ Helper::determineLanguageDirection() }}">
                 // Ketika modal ditampilkan, fokus ke input
                 $('#mobileSearchModal').on('shown.bs.modal', function () {
                     $('#mobileTagSearch').focus();
+                    
+                    // Cek jika ada recent searches di localStorage
+                    var recentSearches = JSON.parse(localStorage.getItem('snipeRecentSearches') || '[]');
+                    if (recentSearches.length > 0) {
+                        $('.recent-searches').show();
+                        var recentTagsHtml = '';
+                        recentSearches.slice(0, 5).forEach(function(tag) {
+                            recentTagsHtml += '<span class="badge" data-tag="' + tag + '">' + tag + '</span>';
+                        });
+                        $('.recent-tags').html(recentTagsHtml);
+                    }
+                });
+                
+                // Ketika modal ditutup, kosongkan input
+                $('#mobileSearchModal').on('hidden.bs.modal', function () {
+                    $('#mobileTagSearch').val('');
                 });
                 
                 // Submit form saat Enter ditekan
                 $('#mobileTagSearch').on('keypress', function(e) {
                     if (e.which === 13) {
+                        e.preventDefault();
+                        saveToRecentSearches($(this).val());
                         $(this).closest('form').submit();
                     }
                 });
                 
-                // Sinkronisasi nilai dengan desktop search jika diperlukan
+                // Klik pada recent tag
+                $(document).on('click', '.recent-tags .badge', function() {
+                    var tag = $(this).data('tag');
+                    $('#mobileTagSearch').val(tag).focus();
+                });
+                
+                // Submit button click
+                $('#mobileSearchModal .btn-primary').on('click', function(e) {
+                    var tag = $('#mobileTagSearch').val().trim();
+                    if (tag) {
+                        saveToRecentSearches(tag);
+                    }
+                });
+                
+                // Fungsi untuk menyimpan ke recent searches
+                function saveToRecentSearches(tag) {
+                    if (!tag) return;
+                    
+                    var recentSearches = JSON.parse(localStorage.getItem('snipeRecentSearches') || '[]');
+                    
+                    // Hapus jika sudah ada
+                    var index = recentSearches.indexOf(tag);
+                    if (index !== -1) {
+                        recentSearches.splice(index, 1);
+                    }
+                    
+                    // Tambah di awal
+                    recentSearches.unshift(tag);
+                    
+                    // Simpan maksimal 10 item
+                    if (recentSearches.length > 10) {
+                        recentSearches = recentSearches.slice(0, 10);
+                    }
+                    
+                    localStorage.setItem('snipeRecentSearches', JSON.stringify(recentSearches));
+                }
+                
+                // Sinkronisasi nilai dengan desktop search
                 $('#mobileTagSearch').on('input', function() {
                     $('#tagSearch').val($(this).val());
                 });
@@ -1388,6 +1452,27 @@ dir="{{ Helper::determineLanguageDirection() }}">
                     if (urlParams.has('topsearch') && urlParams.get('topsearch') === 'true') {
                         $('#mobileSearchModal').modal('show');
                     }
+                }
+                
+                // Clear button functionality
+                $(document).on('click', '.clear-search', function() {
+                    $('#mobileTagSearch').val('').focus();
+                    $(this).hide();
+                });
+                
+                // Show/hide clear button
+                $('#mobileTagSearch').on('input', function() {
+                    var clearBtn = $('.clear-search');
+                    if ($(this).val().trim() !== '') {
+                        clearBtn.show();
+                    } else {
+                        clearBtn.hide();
+                    }
+                });
+                
+                // Add clear button to input
+                if (!$('#mobileTagSearch').next('.clear-search').length) {
+                    $('#mobileTagSearch').after('<button type="button" class="clear-search" style="display: none;">×</button>');
                 }
             });
         </script>
