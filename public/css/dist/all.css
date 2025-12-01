@@ -23962,6 +23962,88 @@ h4,
   border-radius: 0 6px 6px 0 !important;
   margin-left: -1px;
 }
+/* Mobile search button styling */
+.mobile-search-btn {
+  display: block !important;
+  padding: 15px 10px !important;
+  color: white !important;
+  font-size: 18px !important;
+}
+.mobile-search-btn:hover,
+.mobile-search-btn:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+/* Hide search form on mobile */
+.navbar-nav .navbar-form {
+  margin-right: 15px;
+}
+@media (max-width: 767px) {
+  .navbar-nav .navbar-form.hidden-xs {
+    display: none !important;
+  }
+  .mobile-search-btn {
+    display: inline-block !important;
+  }
+}
+@media (min-width: 768px) {
+  .mobile-search-btn {
+    display: none !important;
+  }
+  .navbar-nav .navbar-form.hidden-xs {
+    display: block !important;
+  }
+}
+/* Modal search input styling */
+#mobileSearchModal .modal-dialog {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+}
+#mobileSearchModal .modal-content {
+  border-radius: 0;
+  height: 100%;
+  border: none;
+}
+#mobileSearchModal .modal-header {
+  background-color: #3c8dbc;
+  color: white;
+  border-bottom: none;
+  padding: 15px 20px;
+}
+#mobileSearchModal .modal-body {
+  padding: 30px 20px;
+}
+#mobileSearchModal .close {
+  color: white;
+  opacity: 0.8;
+  text-shadow: none;
+}
+#mobileSearchModal .close:hover {
+  opacity: 1;
+}
+#mobileSearchModal .form-control {
+  height: 50px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 2px solid #3c8dbc;
+}
+#mobileSearchModal .btn-primary {
+  height: 50px;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #3c8dbc;
+  border-color: #3c8dbc;
+}
+/* Input group styling untuk modal */
+#mobileSearchModal .input-group {
+  width: 100%;
+}
+#mobileSearchModal .input-group-btn .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 /* =============================================
    MODAL STYLES - CONSISTENT WITH BOX DESIGN
    ============================================= */
@@ -24152,6 +24234,72 @@ h4,
 }
 .modal-fullscreen .modal-footer {
   border-radius: 0;
+}
+/* Style untuk dropdown Create */
+.create-dropdown .dropdown-toggle {
+  padding: 15px 10px !important;
+  color: white !important;
+}
+.create-dropdown .dropdown-toggle:hover,
+.create-dropdown .dropdown-toggle:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+/* Ikon + untuk mobile */
+.create-dropdown .create-mobile-btn {
+  font-size: 18px !important;
+  padding: 15px 12px !important;
+}
+/* Tampilan desktop - teks "Create New" */
+.create-dropdown .hidden-xs {
+  font-size: 14px !important;
+}
+/* Responsive behavior */
+@media (max-width: 767px) {
+  .create-dropdown .hidden-xs {
+    display: none !important;
+  }
+  .create-dropdown .create-mobile-btn {
+    display: inline-block !important;
+  }
+  /* Styling untuk dropdown menu pada mobile */
+  .create-dropdown .dropdown-menu {
+    position: absolute !important;
+    right: 0 !important;
+    left: auto !important;
+    border: 1px solid #ddd;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    margin-top: 0 !important;
+  }
+}
+@media (min-width: 768px) {
+  .create-dropdown .create-mobile-btn {
+    display: none !important;
+  }
+  .create-dropdown .hidden-xs {
+    display: inline-block !important;
+  }
+}
+/* Animasi untuk ikon plus */
+.create-dropdown .fa-plus {
+  transition: transform 0.3s ease;
+}
+.create-dropdown.open .fa-plus {
+  transform: rotate(45deg);
+}
+/* Styling untuk dropdown menu item pada mobile */
+@media (max-width: 767px) {
+  .create-dropdown .dropdown-menu li a {
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .create-dropdown .dropdown-menu li a i {
+    margin-right: 10px !important;
+    min-width: 20px !important;
+    text-align: center !important;
+  }
 }
 
 
@@ -26890,6 +27038,88 @@ h4,
   border-radius: 0 6px 6px 0 !important;
   margin-left: -1px;
 }
+/* Mobile search button styling */
+.mobile-search-btn {
+  display: block !important;
+  padding: 15px 10px !important;
+  color: white !important;
+  font-size: 18px !important;
+}
+.mobile-search-btn:hover,
+.mobile-search-btn:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+/* Hide search form on mobile */
+.navbar-nav .navbar-form {
+  margin-right: 15px;
+}
+@media (max-width: 767px) {
+  .navbar-nav .navbar-form.hidden-xs {
+    display: none !important;
+  }
+  .mobile-search-btn {
+    display: inline-block !important;
+  }
+}
+@media (min-width: 768px) {
+  .mobile-search-btn {
+    display: none !important;
+  }
+  .navbar-nav .navbar-form.hidden-xs {
+    display: block !important;
+  }
+}
+/* Modal search input styling */
+#mobileSearchModal .modal-dialog {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+}
+#mobileSearchModal .modal-content {
+  border-radius: 0;
+  height: 100%;
+  border: none;
+}
+#mobileSearchModal .modal-header {
+  background-color: #3c8dbc;
+  color: white;
+  border-bottom: none;
+  padding: 15px 20px;
+}
+#mobileSearchModal .modal-body {
+  padding: 30px 20px;
+}
+#mobileSearchModal .close {
+  color: white;
+  opacity: 0.8;
+  text-shadow: none;
+}
+#mobileSearchModal .close:hover {
+  opacity: 1;
+}
+#mobileSearchModal .form-control {
+  height: 50px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 2px solid #3c8dbc;
+}
+#mobileSearchModal .btn-primary {
+  height: 50px;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #3c8dbc;
+  border-color: #3c8dbc;
+}
+/* Input group styling untuk modal */
+#mobileSearchModal .input-group {
+  width: 100%;
+}
+#mobileSearchModal .input-group-btn .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 /* =============================================
    MODAL STYLES - CONSISTENT WITH BOX DESIGN
    ============================================= */
@@ -27080,6 +27310,72 @@ h4,
 }
 .modal-fullscreen .modal-footer {
   border-radius: 0;
+}
+/* Style untuk dropdown Create */
+.create-dropdown .dropdown-toggle {
+  padding: 15px 10px !important;
+  color: white !important;
+}
+.create-dropdown .dropdown-toggle:hover,
+.create-dropdown .dropdown-toggle:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+/* Ikon + untuk mobile */
+.create-dropdown .create-mobile-btn {
+  font-size: 18px !important;
+  padding: 15px 12px !important;
+}
+/* Tampilan desktop - teks "Create New" */
+.create-dropdown .hidden-xs {
+  font-size: 14px !important;
+}
+/* Responsive behavior */
+@media (max-width: 767px) {
+  .create-dropdown .hidden-xs {
+    display: none !important;
+  }
+  .create-dropdown .create-mobile-btn {
+    display: inline-block !important;
+  }
+  /* Styling untuk dropdown menu pada mobile */
+  .create-dropdown .dropdown-menu {
+    position: absolute !important;
+    right: 0 !important;
+    left: auto !important;
+    border: 1px solid #ddd;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    margin-top: 0 !important;
+  }
+}
+@media (min-width: 768px) {
+  .create-dropdown .create-mobile-btn {
+    display: none !important;
+  }
+  .create-dropdown .hidden-xs {
+    display: inline-block !important;
+  }
+}
+/* Animasi untuk ikon plus */
+.create-dropdown .fa-plus {
+  transition: transform 0.3s ease;
+}
+.create-dropdown.open .fa-plus {
+  transform: rotate(45deg);
+}
+/* Styling untuk dropdown menu item pada mobile */
+@media (max-width: 767px) {
+  .create-dropdown .dropdown-menu li a {
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .create-dropdown .dropdown-menu li a i {
+    margin-right: 10px !important;
+    min-width: 20px !important;
+    text-align: center !important;
+  }
 }
 
 

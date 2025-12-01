@@ -103,7 +103,7 @@ dir="{{ Helper::determineLanguageDirection() }}">
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top" role="navigation">
                     
-                    <div class="nav navbar-nav navbar-left">
+                    <div class="navbar-left">
                         <!-- Pindahkan Sidebar Toggle Button di sini (setelah logo) -->
                         <a href="#" style="color: white; margin-left: 15px;" class="sidebar-toggle hidden-xs btn btn-white " data-toggle="push-menu"
                        role="button">
@@ -141,32 +141,43 @@ dir="{{ Helper::determineLanguageDirection() }}">
                         <ul class="nav navbar-nav">
                             @can('index', \App\Models\Asset::class)
                                 <li>
-                                    <form class="navbar-form navbar-left form-horizontal" role="search"
-                                          action="{{ route('findbytag/hardware') }}" method="get">
-
+                                    <!-- Search form untuk desktop -->
+                                    <form class="navbar-form navbar-left form-horizontal hidden-xs" role="search"
+                                        action="{{ route('findbytag/hardware') }}" method="get">
                                         <div class="search-box">
                                             <input type="text"
                                                 id="tagSearch"
                                                 name="assetTag"
                                                 placeholder="{{ trans('general.lookup_by_tag') }}">
-
                                             <button type="submit" id="topSearchButton">
-                                                    <x-icon type="search" />
-                                                </button>
-
+                                                <x-icon type="search" />
+                                            </button>
                                             <input type="hidden" name="topsearch" value="true">
-                                            </div>
-
+                                        </div>
                                     </form>
+                                    
+                                    <!-- Icon kaca pembesar untuk mobile -->
+                                    <a href="#" class="visible-xs mobile-search-btn" data-toggle="modal" data-target="#mobileSearchModal">
+                                        <x-icon type="search" />
+                                        <span class="sr-only">{{ trans('general.search') }}</span>
+                                    </a>
                                 </li>
                             @endcan
 
                             @can('admin')
-                                <li class="dropdown" aria-hidden="true">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                                <li class="dropdown create-dropdown" aria-hidden="true">
+                                    <!-- Tampilan Desktop -->
+                                    <a href="#" class="dropdown-toggle hidden-xs" data-toggle="dropdown" tabindex="-1">
                                         {{ trans('general.create') }}
                                         <strong class="caret"></strong>
                                     </a>
+                                    
+                                    <!-- Ikon + untuk Mobile -->
+                                    <a href="#" class="dropdown-toggle visible-xs create-mobile-btn" data-toggle="dropdown" tabindex="-1">
+                                        <i class="fa fa-plus"></i>
+                                        <span class="sr-only">{{ trans('general.create') }}</span>
+                                    </a>
+                                    
                                     <ul class="dropdown-menu">
                                         @can('create', \App\Models\Asset::class)
                                             <li{!! (request()->is('hardware/create') ? ' class="active"' : '') !!}>
@@ -1028,6 +1039,41 @@ dir="{{ Helper::determineLanguageDirection() }}">
             </div>
         </div>
 
+        <!-- Modal untuk pencarian mobile -->
+        <div class="modal fade" id="mobileSearchModal" tabindex="-1" role="dialog" aria-labelledby="mobileSearchModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title" id="mobileSearchModalLabel">
+                            {{ trans('general.lookup_by_tag') }}
+                        </h5>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="search"
+                            action="{{ route('findbytag/hardware') }}" method="get">
+                            <div class="input-group">
+                                <input type="text"
+                                    class="form-control"
+                                    id="mobileTagSearch"
+                                    name="assetTag"
+                                    placeholder="{{ trans('general.lookup_by_tag') }}"
+                                    autofocus>
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-primary">
+                                        <x-icon type="search" />
+                                        {{ trans('general.search') }}
+                                    </button>
+                                </span>
+                            </div>
+                            <input type="hidden" name="topsearch" value="true">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         {{-- Javascript files --}}
@@ -1310,6 +1356,40 @@ dir="{{ Helper::determineLanguageDirection() }}">
             });
 
 
+        </script>
+
+        <script>
+            // Handle mobile search modal
+            $(document).ready(function() {
+                // Ketika modal ditampilkan, fokus ke input
+                $('#mobileSearchModal').on('shown.bs.modal', function () {
+                    $('#mobileTagSearch').focus();
+                });
+                
+                // Submit form saat Enter ditekan
+                $('#mobileTagSearch').on('keypress', function(e) {
+                    if (e.which === 13) {
+                        $(this).closest('form').submit();
+                    }
+                });
+                
+                // Sinkronisasi nilai dengan desktop search jika diperlukan
+                $('#mobileTagSearch').on('input', function() {
+                    $('#tagSearch').val($(this).val());
+                });
+                
+                $('#tagSearch').on('input', function() {
+                    $('#mobileTagSearch').val($(this).val());
+                });
+                
+                // Auto open modal jika ada parameter search pada URL di mobile
+                if ($(window).width() < 768) {
+                    var urlParams = new URLSearchParams(window.location.search);
+                    if (urlParams.has('topsearch') && urlParams.get('topsearch') === 'true') {
+                        $('#mobileSearchModal').modal('show');
+                    }
+                }
+            });
         </script>
 
         @if ((session()->get('topsearch')=='true') || (request()->is('/')))
