@@ -1,4 +1,5 @@
 @extends('layouts/default')
+
 {{-- Page title --}}
 @section('title')
 {{ trans('general.dashboard') }}
@@ -12,7 +13,7 @@
 @if ($snipeSettings->dashboard_message!='')
 <div class="row">
     <div class="col-md-12">
-        <div class="box">
+        <div class="box box-default">
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="row">
@@ -31,127 +32,198 @@
     <!-- panel -->
     <div class="col-lg-2 col-xs-6">
         <a href="{{ route('hardware.index') }}">
-            <!-- small hardware box -->
-            <div class="dashboard small-box bg-teal">
+            <!-- outlined hardware box with updated layout -->
+            <div class="dashboard outline-card border-teal">
                 <div class="inner">
-                    <h3>{{ number_format(\App\Models\Asset::AssetsForShow()->count()) }}</h3>
-                    <p>{{ trans('general.assets') }}</p>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <h3 class="text-teal">{{ number_format(\App\Models\Asset::AssetsForShow()->count()) }}</h3>
+                            <p class="text-muted">{{ trans('general.assets') }}</p>
+                        </div>
+                        <div class="col-xs-4 text-right">
+                            <div class="icon" aria-hidden="true">
+                                <x-icon type="assets" class="text-teal" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="icon" aria-hidden="true">
-                    <x-icon type="assets" />
+                <div class="outline-card-footer text-teal">
+                    <div class="row">
+                        <div class="col-xs-10">
+                            {{ trans('general.view_all') }}
+                        </div>
+                        <div class="col-xs-2 text-right">
+                            <x-icon type="arrow-circle-right" />
+                        </div>
+                    </div>
                 </div>
-                <span class="small-box-footer">
-                    {{ trans('general.view_all') }}
-                    <x-icon type="arrow-circle-right" />
-                </span>
             </div>
         </a>
     </div><!-- ./col -->
 
     <div class="col-lg-2 col-xs-6">
         <a href="{{ route('licenses.index') }}" aria-hidden="true">
-            <!-- small license box -->
-            <div class="dashboard small-box bg-maroon">
+            <!-- outlined license box with updated layout -->
+            <div class="dashboard outline-card border-maroon">
                 <div class="inner">
-                    <h3>{{ number_format($counts['license']) }}</h3>
-                    <p>{{ trans('general.licenses') }}</p>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <h3 class="text-maroon">{{ number_format($counts['license']) }}</h3>
+                            <p class="text-muted">{{ trans('general.licenses') }}</p>
+                        </div>
+                        <div class="col-xs-4 text-right">
+                            <div class="icon" aria-hidden="true">
+                                <x-icon type="licenses" class="text-maroon" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="icon" aria-hidden="true">
-                    <x-icon type="licenses" />
+                <div class="outline-card-footer text-maroon">
+                    <div class="row">
+                        <div class="col-xs-10">
+                            {{ trans('general.view_all') }}
+                        </div>
+                        <div class="col-xs-2 text-right">
+                            <x-icon type="arrow-circle-right" />
+                        </div>
+                    </div>
                 </div>
-                <span class="small-box-footer">
-                    {{ trans('general.view_all') }}
-                    <x-icon type="arrow-circle-right" />
-                </span>
             </div>
         </a>
     </div><!-- ./col -->
 
 
     <div class="col-lg-2 col-xs-6">
-    <!-- small accessories box -->
+    <!-- outlined accessories box with updated layout -->
         <a href="{{ route('accessories.index') }}">
-            <div class="dashboard small-box bg-orange">
+            <div class="dashboard outline-card border-orange">
                 <div class="inner">
-                    <h3> {{ number_format($counts['accessory']) }}</h3>
-                    <p>{{ trans('general.accessories') }}</p>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <h3 class="text-orange"> {{ number_format($counts['accessory']) }}</h3>
+                            <p class="text-muted">{{ trans('general.accessories') }}</p>
+                        </div>
+                        <div class="col-xs-4 text-right">
+                            <div class="icon" aria-hidden="true">
+                                <x-icon type="accessories" class="text-orange" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="icon" aria-hidden="true">
-                    <x-icon type="accessories" />
+                <div class="outline-card-footer text-orange">
+                    <div class="row">
+                        <div class="col-xs-10">
+                            {{ trans('general.view_all') }}
+                        </div>
+                        <div class="col-xs-2 text-right">
+                            <x-icon type="arrow-circle-right" />
+                        </div>
+                    </div>
                 </div>
-                <span class="small-box-footer">
-                    {{ trans('general.view_all') }}
-                <x-icon type="arrow-circle-right" />
-                </span>
             </div>
         </a>
     </div><!-- ./col -->
 
     <div class="col-lg-2 col-xs-6">
-    <!-- small consumables box -->
+    <!-- outlined consumables box with updated layout -->
         <a href="{{ route('consumables.index') }}">
-            <div class="dashboard small-box bg-purple">
+            <div class="dashboard outline-card border-purple">
                 <div class="inner">
-                    <h3> {{ number_format($counts['consumable']) }}</h3>
-                    <p>{{ trans('general.consumables') }}</p>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <h3 class="text-purple"> {{ number_format($counts['consumable']) }}</h3>
+                            <p class="text-muted">{{ trans('general.consumables') }}</p>
+                        </div>
+                        <div class="col-xs-4 text-right">
+                            <div class="icon" aria-hidden="true">
+                                <x-icon type="consumables" class="text-purple" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="icon" aria-hidden="true">
-                    <x-icon type="consumables" />
+                <div class="outline-card-footer text-purple">
+                    <div class="row">
+                        <div class="col-xs-10">
+                            {{ trans('general.view_all') }}
+                        </div>
+                        <div class="col-xs-2 text-right">
+                            <x-icon type="arrow-circle-right" />
+                        </div>
+                    </div>
                 </div>
-                <span class="small-box-footer">
-                    {{ trans('general.view_all') }}
-                    <x-icon type="arrow-circle-right" />
-                </span>
             </div>
         </a>
     </div><!-- ./col -->
 
     <div class="col-lg-2 col-xs-6">
-        <!-- small components box -->
+        <!-- outlined components box with updated layout -->
         <a href="{{ route('components.index') }}">
-            <div class="dashboard small-box bg-yellow">
+            <div class="dashboard outline-card border-yellow">
                 <div class="inner">
-                    <h3>{{ number_format($counts['component']) }}</h3>
-                    <p>{{ trans('general.components') }}</p>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <h3 class="text-yellow">{{ number_format($counts['component']) }}</h3>
+                            <p class="text-muted">{{ trans('general.components') }}</p>
+                        </div>
+                        <div class="col-xs-4 text-right">
+                            <div class="icon" aria-hidden="true">
+                                <x-icon type="components" class="text-yellow" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="icon" aria-hidden="true">
-                    <x-icon type="components" />
+                <div class="outline-card-footer text-yellow">
+                    <div class="row">
+                        <div class="col-xs-10">
+                            {{ trans('general.view_all') }}
+                        </div>
+                        <div class="col-xs-2 text-right">
+                            <x-icon type="arrow-circle-right" />
+                        </div>
+                    </div>
                 </div>
-                <span class="small-box-footer">
-                    {{ trans('general.view_all') }}
-                    <x-icon type="arrow-circle-right" />
-                </span>
             </div>
         </a>
     </div><!-- ./col -->
 
     <div class="col-lg-2 col-xs-6">
-        <!-- small users box -->
+        <!-- outlined users box with updated layout -->
         <a href="{{ route('users.index') }}">
-            <div class="dashboard small-box bg-light-blue">
+            <div class="dashboard outline-card border-light-blue">
                 <div class="inner">
-                    <h3>{{ number_format($counts['user']) }}</h3>
-                    <p>{{ trans('general.people') }}</p>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <h3 class="text-light-blue">{{ number_format($counts['user']) }}</h3>
+                            <p class="text-muted">{{ trans('general.people') }}</p>
+                        </div>
+                        <div class="col-xs-4 text-right">
+                            <div class="icon" aria-hidden="true">
+                                <x-icon type="users" class="text-light-blue" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="icon" aria-hidden="true">
-                    <x-icon type="users" />
+                <div class="outline-card-footer text-light-blue">
+                    <div class="row">
+                        <div class="col-xs-10">
+                            {{ trans('general.view_all') }}
+                        </div>
+                        <div class="col-xs-2 text-right">
+                            <x-icon type="arrow-circle-right" />
+                        </div>
+                    </div>
                 </div>
-                <span class="small-box-footer">
-                    {{ trans('general.view_all') }}
-                    <x-icon type="arrow-circle-right" />
-                </span>
             </div>
         </a>
     </div><!-- ./col -->
 
-</div>
 </div>
 
 @if ($counts['grand_total'] == 0)
 
     <div class="row">
         <div class="col-md-12">
-            <div class="box">
+            <div class="box box-default">
                 <div class="box-header with-border">
                     <h2 class="box-title">{{ trans('general.dashboard_info') }}</h2>
                 </div>
@@ -174,32 +246,32 @@
                     <div class="row">
                         <div class="col-md-2">
                             @can('create', \App\Models\Asset::class)
-                            <a class="btn bg-teal" style="width: 100%" href="{{ route('hardware.create') }}">{{ trans('general.new_asset') }}</a>
+                            <a class="btn btn-teal" style="width: 100%" href="{{ route('hardware.create') }}">{{ trans('general.new_asset') }}</a>
                             @endcan
                         </div>
                         <div class="col-md-2">
                             @can('create', \App\Models\License::class)
-                                <a class="btn bg-maroon" style="width: 100%" href="{{ route('licenses.create') }}">{{ trans('general.new_license') }}</a>
+                                <a class="btn btn-maroon" style="width: 100%" href="{{ route('licenses.create') }}">{{ trans('general.new_license') }}</a>
                             @endcan
                         </div>
                         <div class="col-md-2">
                             @can('create', \App\Models\Accessory::class)
-                                <a class="btn bg-orange" style="width: 100%" href="{{ route('accessories.create') }}">{{ trans('general.new_accessory') }}</a>
+                                <a class="btn btn-orange" style="width: 100%" href="{{ route('accessories.create') }}">{{ trans('general.new_accessory') }}</a>
                             @endcan
                         </div>
                         <div class="col-md-2">
                             @can('create', \App\Models\Consumable::class)
-                                <a class="btn bg-purple" style="width: 100%" href="{{ route('consumables.create') }}">{{ trans('general.new_consumable') }}</a>
+                                <a class="btn btn-purple" style="width: 100%" href="{{ route('consumables.create') }}">{{ trans('general.new_consumable') }}</a>
                             @endcan
                         </div>
                         <div class="col-md-2">
                             @can('create', \App\Models\Component::class)
-                                <a class="btn bg-yellow" style="width: 100%" href="{{ route('components.create') }}">{{ trans('general.new_component') }}</a>
+                                <a class="btn btn-yellow" style="width: 100%" href="{{ route('components.create') }}">{{ trans('general.new_component') }}</a>
                             @endcan
                         </div>
                         <div class="col-md-2">
                             @can('create', \App\Models\User::class)
-                                <a class="btn bg-light-blue" style="width: 100%" href="{{ route('users.create') }}">{{ trans('general.new_user') }}</a>
+                                <a class="btn btn-light-blue" style="width: 100%" href="{{ route('users.create') }}">{{ trans('general.new_user') }}</a>
                             @endcan
                         </div>
                     </div>
@@ -213,7 +285,7 @@
 <!-- recent activity -->
 <div class="row">
   <div class="col-md-8">
-    <div class="box">
+    <div class="box box-default">
       <div class="box-header with-border">
         <h2 class="box-title">{{ trans('general.recent_activity') }}</h2>
         <div class="box-tools pull-right">
@@ -226,6 +298,7 @@
       <div class="box-body">
         <div class="row">
           <div class="col-md-12">
+            
             <div class="table-responsive">
 
                 <table
@@ -239,6 +312,7 @@
                     id="dashActivityReport"
                     class="table table-striped snipe-table"
                     data-url="{{ route('api.activity.index', ['limit' => 25]) }}">
+                    
                     <thead>
                     <tr>
                         <th data-field="icon" data-visible="true" style="width: 40px;" class="hidden-xs" data-formatter="iconFormatter"><span  class="sr-only">{{ trans('admin/hardware/table.icon') }}</span></th>
@@ -250,8 +324,6 @@
                     </tr>
                     </thead>
                 </table>
-
-
 
             </div><!-- /.responsive -->
           </div><!-- /.col -->
@@ -356,72 +428,72 @@
 						</div> <!-- /.col -->
 						<div class="text-center col-md-12" style="padding-top: 10px;">
 							<a href="{{ route('companies.index') }}" class="btn btn-primary btn-sm" style="width: 100%">{{ trans('general.viewall') }}</a>
-						</div>
-					</div> <!-- /.row -->
+                        </div>
+                    </div> <!-- /.row -->
 
-				</div><!-- /.box-body -->
-			</div> <!-- /.box -->
-		
-		@else
-			 <!-- Locations -->
-			 <div class="box box-default">
-				<div class="box-header with-border">
-					<h2 class="box-title">{{ trans('general.locations') }}</h2>
-					<div class="box-tools pull-right">
-						<button type="button" class="btn btn-box-tool" data-widget="collapse">
+                </div><!-- /.box-body -->
+            </div> <!-- /.box -->
+        
+        @else
+             <!-- Locations -->
+             <div class="box box-default">
+                <div class="box-header with-border">
+                    <h2 class="box-title">{{ trans('general.locations') }}</h2>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
                             <x-icon type="minus" />
-							<span class="sr-only">{{ trans('general.collapse') }}</span>
-						</button>
-					</div>
-				</div>
-				<!-- /.box-header -->
-				<div class="box-body">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="table-responsive">
-							<table
-									data-cookie-id-table="dashLocationSummary"
-									data-height="400"
-									data-side-pagination="server"
+                            <span class="sr-only">{{ trans('general.collapse') }}</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                            <table
+                                    data-cookie-id-table="dashLocationSummary"
+                                    data-height="400"
+                                    data-side-pagination="server"
                                     data-pagination="false"
-									data-sort-order="desc"
-									data-sort-field="assets_count"
-									id="dashLocationSummary"
-									class="table table-striped snipe-table"
-									data-url="{{ route('api.locations.index', ['sort' => 'assets_count', 'order' => 'asc']) }}">
-								<thead>
-								<tr>
-									<th class="col-sm-3" data-visible="true" data-field="name" data-formatter="locationsLinkFormatter" data-sortable="true">{{ trans('general.name') }}</th>
-									
-									<th class="col-sm-1" data-visible="true" data-field="assets_count" data-sortable="true">
+                                    data-sort-order="desc"
+                                    data-sort-field="assets_count"
+                                    id="dashLocationSummary"
+                                    class="table table-striped snipe-table"
+                                    data-url="{{ route('api.locations.index', ['sort' => 'assets_count', 'order' => 'asc']) }}">
+                                <thead>
+                                <tr>
+                                    <th class="col-sm-3" data-visible="true" data-field="name" data-formatter="locationsLinkFormatter" data-sortable="true">{{ trans('general.name') }}</th>
+                                    
+                                    <th class="col-sm-1" data-visible="true" data-field="assets_count" data-sortable="true">
                                         <x-icon type="assets" />
-										<span class="sr-only">{{ trans('general.asset_count') }}</span>
-									</th>
-									<th class="col-sm-1" data-visible="true" data-field="assigned_assets_count" data-sortable="true">
-										
-										{{ trans('general.assigned') }}
-									</th>
-									<th class="col-sm-1" data-visible="true" data-field="users_count" data-sortable="true">
+                                        <span class="sr-only">{{ trans('general.asset_count') }}</span>
+                                    </th>
+                                    <th class="col-sm-1" data-visible="true" data-field="assigned_assets_count" data-sortable="true">
+                                        
+                                        {{ trans('general.assigned') }}
+                                    </th>
+                                    <th class="col-sm-1" data-visible="true" data-field="users_count" data-sortable="true">
                                         <x-icon type="users" />
-										<span class="sr-only">{{ trans('general.people') }}</span>
-										
-									</th>
-									
-								</tr>
-								</thead>
-							</table>
-							</div>
-						</div> <!-- /.col -->
-						<div class="text-center col-md-12" style="padding-top: 10px;">
-							<a href="{{ route('locations.index') }}" class="btn btn-primary btn-sm" style="width: 100%">{{ trans('general.viewall') }}</a>
-						</div>
-					</div> <!-- /.row -->
+                                        <span class="sr-only">{{ trans('general.people') }}</span>
+                                        
+                                    </th>
+                                    
+                                </tr>
+                                </thead>
+                            </table>
+                            </div>
+                        </div> <!-- /.col -->
+                        <div class="text-center col-md-12" style="padding-top: 10px;">
+                            <a href="{{ route('locations.index') }}" class="btn btn-primary btn-sm" style="width: 100%">{{ trans('general.viewall') }}</a>
+                        </div>
+                    </div> <!-- /.row -->
 
-				</div><!-- /.box-body -->
-			</div> <!-- /.box -->
+                </div><!-- /.box-body -->
+            </div> <!-- /.box -->
 
-		@endif
-			
+        @endif
+            
     </div>
     <div class="col-md-6">
 
@@ -501,9 +573,231 @@
 @include ('partials.bootstrap-table', ['simple_view' => true, 'nopages' => true])
 @stop
 
+@push('css')
+<style>
+    /* Clean Outline Card Styles with Color - UPDATED LAYOUT */
+    .outline-card {
+        position: relative;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: white;
+        border: 2px solid #e0e0e0;
+        transition: all 0.3s ease;
+        min-height: 130px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    /* Border colors */
+    .border-teal {
+        border-color: #20c997;
+    }
+    
+    .border-maroon {
+        border-color: #d81b60;
+    }
+    
+    .border-orange {
+        border-color: #ff851b;
+    }
+    
+    .border-purple {
+        border-color: #605ca8;
+    }
+    
+    .border-yellow {
+        border-color: #ffc107;
+    }
+    
+    .border-light-blue {
+        border-color: #3c8dbc;
+    }
+
+    .outline-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .outline-card .inner {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0;
+    }
+
+    .outline-card .inner .row {
+        margin: 0;
+        align-items: center;
+    }
+
+    .outline-card .inner h3 {
+        font-size: 32px;
+        font-weight: 600;
+        margin: 0 0 5px 0;
+        line-height: 1;
+    }
+
+    .outline-card .inner p {
+        font-size: 14px;
+        margin: 0;
+        color: #666;
+        font-weight: 500;
+    }
+
+    /* Text colors */
+    .text-teal { color: #20c997 !important; }
+    .text-maroon { color: #d81b60 !important; }
+    .text-orange { color: #ff851b !important; }
+    .text-purple { color: #605ca8 !important; }
+    .text-yellow { color: #ffc107 !important; }
+    .text-light-blue { color: #3c8dbc !important; }
+
+    .outline-card .icon {
+        font-size: 40px;
+        transition: all 0.3s ease;
+        line-height: 1;
+        margin-top: -5px;
+    }
+
+    .outline-card:hover .icon {
+        transform: scale(1.1);
+    }
+
+    .outline-card-footer {
+        padding: 8px 0 0 0;
+        background: transparent;
+        border-top: 1px solid #e0e0e0;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+
+    .outline-card-footer .row {
+        margin: 0;
+        width: 100%;
+        align-items: center;
+    }
+
+    .outline-card-footer .col-xs-10 {
+        padding-left: 0;
+        padding-right: 5px;
+    }
+
+    .outline-card-footer .col-xs-2 {
+        padding-left: 5px;
+        padding-right: 0;
+    }
+
+    .outline-card:hover .outline-card-footer {
+        border-top-color: #ccc;
+    }
+
+    /* Button colors for empty state */
+    .btn-teal {
+        background-color: #20c997;
+        border-color: #20c997;
+        color: white;
+    }
+    
+    .btn-maroon {
+        background-color: #d81b60;
+        border-color: #d81b60;
+        color: white;
+    }
+    
+    .btn-orange {
+        background-color: #ff851b;
+        border-color: #ff851b;
+        color: white;
+    }
+    
+    .btn-purple {
+        background-color: #605ca8;
+        border-color: #605ca8;
+        color: white;
+    }
+    
+    .btn-yellow {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: #333;
+    }
+    
+    .btn-light-blue {
+        background-color: #3c8dbc;
+        border-color: #3c8dbc;
+        color: white;
+    }
+
+    /* Make sure links have no underline */
+    .outline-card + a,
+    .outline-card a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .outline-card + a:hover,
+    .outline-card a:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .outline-card {
+            min-height: 110px;
+            padding: 12px;
+        }
+        
+        .outline-card .inner h3 {
+            font-size: 26px;
+        }
+        
+        .outline-card .inner p {
+            font-size: 12px;
+        }
+        
+        .outline-card .icon {
+            font-size: 32px;
+        }
+        
+        .outline-card-footer {
+            padding: 6px 0 0 0;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+    }
+
+    /* Chart colors for better visibility */
+    .chart-container canvas {
+        max-height: 250px;
+    }
+
+    /* Remove default Bootstrap column padding for better alignment */
+    .outline-card .inner .col-xs-8,
+    .outline-card .inner .col-xs-4 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* Align footer text properly */
+    .outline-card-footer .text-right {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+</style>
+@endpush
+
 @push('js')
-
-
         <script src="{{ url(mix('js/dist/Chart.min.js')) }}"></script>
 <script nonce="{{ csrf_token() }}">
     // ---------------------------
@@ -532,7 +826,7 @@
         var donutOptions = {
             responsive: true,
             maintainAspectRatio: false,
-            cutout: '60%', // Ini yang membuat bentuk donut
+            cutout: '60%',
             plugins: {
                 legend: {
                     position: 'bottom',
@@ -578,19 +872,26 @@
                     return;
                 }
 
-                // Enhance dataset untuk donut chart
+                // Use the same color palette as the cards for consistency
+                var colorPalette = [
+                    '#20c997', '#d81b60', '#ff851b', 
+                    '#605ca8', '#ffc107', '#3c8dbc',
+                    '#6c757d', '#28a745', '#17a2b8', 
+                    '#e83e8c', '#fd7e14', '#20c997'
+                ];
+
                 var enhancedData = {
                     labels: data.labels,
-                    datasets: data.datasets.map(dataset => ({
+                    datasets: data.datasets.map((dataset, index) => ({
                         ...dataset,
+                        backgroundColor: colorPalette.slice(0, dataset.data.length),
                         borderWidth: 2,
                         borderColor: '#fff',
-                        borderRadius: 2,
-                        spacing: 2
+                        borderRadius: 4,
+                        spacing: 3
                     }))
                 };
 
-                // Create donut chart instance
                 window.statusDonutChartInstance = new Chart(ctx, {
                     type: 'doughnut',
                     data: enhancedData,
@@ -612,7 +913,6 @@
         }
     }
 
-    // Handle window resize dengan debounce
     var resizeTimer;
     $(window).on('resize', function() {
         clearTimeout(resizeTimer);

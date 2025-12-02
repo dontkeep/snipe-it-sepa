@@ -71,7 +71,7 @@
                 // reorderableColumns: true,
                 // buttonsPrefix: "btn",
                 addrbar: {{ (config('session.bs_table_addrbar') == 'true') ? 'true' : 'false'}}, // deeplink search phrases, sorting, etc
-                advancedSearch: data_with_default('advanced-search', true),
+                advancedSearch: data_with_default('advanced-search', false),
                 buttonsClass: "tableButton tableButton btn-primary hidden-print",
                 buttonsOrder: [
                     'columns',
@@ -107,7 +107,7 @@
                 showColumnsToggleAll: data_with_default('show-columns-toggle-all', true),
                 showExport: data_with_default('show-export', true),
                 showFullscreen: data_with_default('show-fullscreen', true),
-                showPrint: data_with_default('show-print', true),
+                showPrint: data_with_default('show-print', false),
                 showRefresh: data_with_default('show-refresh', true),
                 showSearchClearButton: data_with_default('show-search-clear-button', true),
                 sortName: data_with_default('sort-name', 'created_at'),
@@ -244,6 +244,18 @@
                 title: '{{ trans('general.export_all_to_csv') }}',
             }
         },
+
+        // btnPrint: {
+        //     text: 'Print PDF',
+        //     icon: 'fa fa-print',
+        //     event () {
+        //         exportTableToPDF();
+        //     },
+        //     attributes: {
+        //         title: 'Print table as PDF',
+        //         class: 'btn-danger'
+        //     }
+        // },
 
         btnShowAdmins: {
             text: '{{ trans('general.show_admins') }}',
@@ -989,7 +1001,7 @@
         }
     }
 
-
+                               
 
     function hardwareAuditFormatter(value, row) {
         return '<a href="{{ config('app.url') }}/hardware/' + row.id + '/audit" class="actions btn btn-sm btn-primary" data-tooltip="true" title="{{ trans('general.audit') }}"><x-icon type="audit" /><span class="sr-only">{{ trans('general.audit') }}</span></a>&nbsp;';
