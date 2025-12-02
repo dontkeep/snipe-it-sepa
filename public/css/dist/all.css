@@ -22378,9 +22378,6 @@ h4 {
     padding-top: 15px;
     padding-bottom: 15px;
   }
-  .firstnav {
-    padding-top: 120px !important;
-  }
   .product {
     width: 400px;
   }
@@ -23502,7 +23499,7 @@ h4,
   animation-delay: 0.6s;
 }
 /* =============================================
-   ENHANCED SIDEBAR STYLES
+   ENHANCED DASHBOARD BOX STYLES
    ============================================= */
 /* small box dashboard */
 .dashboard.small-box {
@@ -23962,6 +23959,9 @@ h4,
   border-radius: 0 6px 6px 0 !important;
   margin-left: -1px;
 }
+/* =============================================
+   MOBILE SEARCH INPUT STYLES
+   ============================================= */
 /* Mobile search button styling */
 .mobile-search-btn {
   display: block !important;
@@ -25476,9 +25476,6 @@ h4 {
     padding-top: 15px;
     padding-bottom: 15px;
   }
-  .firstnav {
-    padding-top: 120px !important;
-  }
   .product {
     width: 400px;
   }
@@ -26600,7 +26597,7 @@ h4,
   animation-delay: 0.6s;
 }
 /* =============================================
-   ENHANCED SIDEBAR STYLES
+   ENHANCED DASHBOARD BOX STYLES
    ============================================= */
 /* small box dashboard */
 .dashboard.small-box {
@@ -27060,6 +27057,9 @@ h4,
   border-radius: 0 6px 6px 0 !important;
   margin-left: -1px;
 }
+/* =============================================
+   MOBILE SEARCH INPUT STYLES
+   ============================================= */
 /* Mobile search button styling */
 .mobile-search-btn {
   display: block !important;
