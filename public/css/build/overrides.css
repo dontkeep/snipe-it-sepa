@@ -35,20 +35,32 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLCz7V1s.ttf) format('truetype');
 }
-.skin-red .skin-purple .skin-blue .skin-black .skin-orange .skin-yellow .skin-green .skin-red-dark .skin-purple-dark .skin-blue-dark .skin-black-dark .skin-orange-dark .skin-yellow-dark .skin-green-dark .skin-contrast .main-header .logo {
-  background-color: inherit;
-}
+/* ===============================================
+   VARIABLE DECLARATIONS (Add missing variables)
+=============================================== */
+/* Define missing color variables if not in variables.less */
+/* Screen size variables if not defined */
+/* ===============================================
+   GENERAL STYLES
+=============================================== */
+/* Remove invalid/incomplete selector lines */
+.skin-red .logo,
+.skin-purple .logo,
+.skin-blue .logo,
+.skin-black .logo,
+.skin-orange .logo,
+.skin-yellow .logo,
+.skin-green .logo,
+.skin-red-dark .logo,
+.skin-purple-dark .logo,
+.skin-blue-dark .logo,
+.skin-black-dark .logo,
+.skin-orange-dark .logo,
+.skin-yellow-dark .logo,
+.skin-green-dark .logo,
+.skin-contrast .logo,
 .main-header .logo {
-  width: 100% !important;
-  white-space: nowrap;
-  text-align: left;
-  display: block;
-  clear: both;
-}
-.main-header .logoa:link,
-.main-header .logo a:hover,
-.main-header .logo a:visited {
-  color: #fff;
+  background-color: inherit;
 }
 .huge {
   font-size: 40px;
@@ -65,7 +77,8 @@
   padding: 10px;
   background: #f4f4f4;
   margin-bottom: 3px;
-  border-inline: 2px solid #e6e7e8;
+  border-left: 2px solid #e6e7e8;
+  border-right: 2px solid #e6e7e8;
   color: #444;
   cursor: move;
 }
@@ -115,6 +128,16 @@ a.accordion-header {
 }
 .main-header .logo {
   padding: 0px 5px 0px 15px;
+  width: 100% !important;
+  white-space: nowrap;
+  text-align: left;
+  display: block;
+  clear: both;
+}
+.main-header .logo a:link,
+.main-header .logo a:hover,
+.main-header .logo a:visited {
+  color: #fff;
 }
 .sidebar-toggle {
   margin-left: -48px;
@@ -126,13 +149,35 @@ a.accordion-header {
   width: 50px;
   padding-top: 10px;
 }
+/* Fix incomplete selector group */
+.skin-red .navbar .dropdown-menu li a,
+.skin-purple .navbar .dropdown-menu li a,
+.skin-blue .navbar .dropdown-menu li a,
+.skin-black .navbar .dropdown-menu li a,
+.skin-orange .navbar .dropdown-menu li a,
+.skin-yellow .navbar .dropdown-menu li a,
+.skin-green .navbar .dropdown-menu li a,
+.skin-red-dark .navbar .dropdown-menu li a,
+.skin-purple-dark .navbar .dropdown-menu li a,
+.skin-blue-dark .navbar .dropdown-menu li a,
+.skin-black-dark .navbar .dropdown-menu li a,
+.skin-orange-dark .navbar .dropdown-menu li a,
+.skin-yellow-dark .navbar .dropdown-menu li a,
+.skin-green-dark .navbar .dropdown-menu li a,
+.skin-contrast .navbar .dropdown-menu li a,
+.main-header .navbar .dropdown-menu li a {
+  color: #333;
+}
+a.logo.no-hover a:hover {
+  background-color: transparent;
+}
 .pull-text-right {
   text-align: right !important;
 }
 .main-header .sidebar-toggle:before {
   content: "\f0c9";
   font-weight: 900;
-  font-family: 'Font Awesome\ 5 Free';
+  font-family: 'Font Awesome 5 Free';
 }
 .direct-chat-contacts {
   padding: 10px;
@@ -258,11 +303,9 @@ a.link-danger:hover {
   font-size: 16px;
   color: orange;
 }
+/* Form Wizard */
 .bs-wizard {
   margin-top: 20px;
-}
-/*Form Wizard*/
-.bs-wizard {
   border-bottom: solid 1px #e0e0e0;
   padding: 0 0 10px 0;
 }
@@ -341,20 +384,31 @@ a.link-danger:hover {
 .bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot {
   pointer-events: none;
 }
-/*END Form Wizard*/
+/* END Form Wizard */
 .left-navblock {
   display: inline-block;
   float: left;
   text-align: left;
   color: white;
   padding: 0px;
-  /* adjust based on your layout */
 }
-.skin-red .skin-purple .skin-blue .skin-black .skin-orange .skin-yellow .skin-green .skin-red-dark .skin-purple-dark .skin-blue-dark .skin-black-dark .skin-orange-dark .skin-yellow-dark .skin-green-dark .skin-contrast .main-header .navbar .dropdown-menu li a {
+/* Fix another incomplete selector group */
+.skin-red .navbar .dropdown-menu li a,
+.skin-purple .navbar .dropdown-menu li a,
+.skin-blue .navbar .dropdown-menu li a,
+.skin-black .navbar .dropdown-menu li a,
+.skin-orange .navbar .dropdown-menu li a,
+.skin-yellow .navbar .dropdown-menu li a,
+.skin-green .navbar .dropdown-menu li a,
+.skin-red-dark .navbar .dropdown-menu li a,
+.skin-purple-dark .navbar .dropdown-menu li a,
+.skin-blue-dark .navbar .dropdown-menu li a,
+.skin-black-dark .navbar .dropdown-menu li a,
+.skin-orange-dark .navbar .dropdown-menu li a,
+.skin-yellow-dark .navbar .dropdown-menu li a,
+.skin-green-dark .navbar .dropdown-menu li a,
+.skin-contrast .navbar .dropdown-menu li a {
   color: #333;
-}
-a.logo.no-hover a:hover {
-  background-color: transparent;
 }
 input:required,
 select:required {
@@ -423,12 +477,7 @@ body {
   a:link,
   a:visited {
     color: #781351;
-  }
-  /* URL */
-  a:link,
-  a:visited {
     background: transparent;
-    color: #333;
     text-decoration: none;
   }
   a[href]:after {
@@ -511,7 +560,7 @@ body {
 .select2-selection__choice {
   border-radius: 0px !important;
 }
-.select2-search select2-search--inline {
+.select2-search.select2-search--inline {
   height: 35px !important;
   float: left;
   margin: 0;
@@ -558,6 +607,7 @@ img.navbar-brand-img,
   padding-bottom: 10px;
   max-width: 200px;
 }
+/* accessibility skip link */
 a.skip-main {
   left: -999px;
   position: absolute;
@@ -650,11 +700,6 @@ h4 {
   border-top: 1px solid #dddddd;
   padding: 6px;
 }
-.row-new-striped div {
-  display: table-cell;
-  border-top: 1px solid #dddddd;
-  padding: 6px;
-}
 .row-new-striped div[class^="col"]:first-child {
   font-weight: bold;
 }
@@ -683,17 +728,9 @@ h4 {
   flex-direction: column;
 }
 /**
-
  COLUMN SELECTOR ICONS
  -----------------------------
- This is kind of weird, but it is necessary to prevent the column-selector code from barfing, since
- any HTML used in the UserPresenter "title" attribute breaks the column selector HTML.
-
- Instead, we use CSS to add the icon into the table header, which leaves the column selector
- "title" text as-is and hides the icon.
-
- See https://github.com/grokability/snipe-it/issues/7989
- */
+**/
 th.css-accessory > .th-inner,
 th.css-accessory-alt > .th-inner,
 th.css-barcode > .th-inner,
@@ -739,7 +776,6 @@ th.css-history > .th-inner::before {
 }
 /**
 BEGIN ICON TABLE HEADERS
-Set the font-weight css property as 900 (For Solid), 400 (Regular or Brands), 300 (Light for pro icons).
 **/
 th.css-barcode > .th-inner::before {
   content: "\f02a";
@@ -935,13 +971,10 @@ label.form-control--disabled {
 /** Start checkbox styles to replace iCheck **/
 /** --------------------------------------- **/
 input[type="checkbox"] {
-  /* Add if not using autoprefixer */
   -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
-  /* For iOS < 15 to remove gradient background */
   background-color: #fff;
-  /* Not removed via appearance */
   margin: 0;
   font: inherit;
   color: #959495;
@@ -952,12 +985,8 @@ input[type="checkbox"] {
   transform: translateY(-0.075em);
   display: grid;
   place-content: center;
-  /*Windows High Contrast Mode*/
 }
-/** This sets the display of a checkbox, and what the "fill" checkmark should look like */
 input[type="checkbox"]::before {
-  /** If you want to use the non-checkbox, filled square, use this instead **/
-  box-shadow: inset 1em 1em #d3d3d3;
   content: "";
   width: 1em;
   height: 1em;
@@ -966,14 +995,11 @@ input[type="checkbox"]::before {
   transform-origin: bottom left;
   transition: 120ms transform ease-in-out;
   box-shadow: inset 1em 1em #428bca;
-  /* Windows High Contrast Mode */
   background-color: CanvasText;
 }
-/** This sets the size of the scale up for the shape we defined above **/
 input[type="checkbox"]:checked::before {
   transform: scale(1);
 }
-/** This sets the scale and color of the DISABLED but CHECKED checkbox */
 input[type=checkbox]:disabled::before,
 input[type=radio]:disabled::before {
   content: "";
@@ -982,7 +1008,6 @@ input[type=radio]:disabled::before {
   transform: scale(1);
   box-shadow: inset 1em 1em #d3d3d3;
 }
-/* This sets the scale and style of a DISABLED checkbox that is NOT checked */
 input[type=checkbox]:disabled:not(:checked)::before,
 input[type=radio]:disabled:not(:checked)::before {
   content: "";
@@ -990,10 +1015,8 @@ input[type=radio]:disabled:not(:checked)::before {
   cursor: not-allowed;
   pointer-events: none;
 }
-/** this is the color of the checkbox and content on a disabled, checked box **/
 input[type=checkbox]:disabled,
 input[type=radio]:disabled {
-  --form-control-color: #d3d3d3;
   color: #959495;
   cursor: not-allowed;
   pointer-events: none;
@@ -1027,11 +1050,6 @@ input[type="radio"]::before {
 input[type="radio"]:checked::before {
   transform: scale(1);
 }
-/**
-* This addresses the column selector in bootstrap-table. Without these two lines, the
-* checkbox and the <span></span> with the label text that BS tables generates will
-* end up on two different lines and it looks assy.
- */
 .dropdown-item-marker input[type=checkbox] {
   font-size: 10px;
 }
@@ -1053,13 +1071,7 @@ input[type="radio"]:checked::before {
 .nav-tabs-custom > .nav-tabs > li.active {
   font-weight: bold;
 }
-/** --------------------------------------- **/
-/** End checkbox styles to replace iCheck   **/
-/** --------------------------------------- **/
-/**
-/** Separator styles with text in the middle. Currently only used by the login page but
-/** could be used elsewhere.
- */
+/** Separator styles with text in the middle. **/
 .separator {
   display: flex;
   align-items: center;
@@ -1087,7 +1099,6 @@ input[type="radio"]:checked::before {
   filter: brightness(70%);
   font-size: 70%;
 }
-/** this is needed to override ekko-lightboxes card view styles **/
 .bootstrap-table .fixed-table-container .table tbody tr .card-view {
   display: table-row !important;
 }
@@ -1188,9 +1199,6 @@ p.callout-subtext a:link {
   color: #31708f;
   text-decoration: none;
 }
-/**
-This just hides the padding on the right side of the mark tag for a less weird visual experience
- */
 mark {
   padding-right: 0px;
 }
@@ -1220,8 +1228,6 @@ Radio toggle styles for permission settings and check/uncheck all
   text-align: center;
   transition: all 0.4s 0s ease;
   cursor: pointer;
-}
-.radio-slider-inputs label {
   color: #9a9999;
   border-radius: 4px;
   border: 1px transparent solid;
@@ -1255,53 +1261,40 @@ Radio toggle styles for permission settings and check/uncheck all
 ===============================================
 */
 /* --- Outline Dashboard Boxes --- */
-/* 1. Make all info-boxes white with a border */
 .info-box {
   background: #ffffff !important;
-  /* Force white background */
   box-shadow: none !important;
-  /* Remove the AdminLTE shadow */
   border-radius: 4px;
-  /* Add a modern, soft corner */
   border: 2px solid;
-  /* Define the border */
   margin-bottom: 20px;
 }
-/* 2. Make the text dark (it's white by default) */
 .info-box[class*='bg-'] .info-box-text,
 .info-box[class*='bg-'] .info-box-number {
   color: #333333 !important;
 }
-/* * 3. Hijack the .bg-* classes to set the
- * BORDER and ICON color using our new variables!
- */
 .info-box.bg-light-blue {
-  border-color: #C24683;
-  /* Uses our new pink */
+  border-color: #3c8dbc;
 }
 .info-box.bg-light-blue .info-box-icon {
-  color: #C24683 !important;
+  color: #3c8dbc !important;
 }
 .info-box.bg-aqua {
-  border-color: #E68FAC;
-  /* Uses our new light pink */
+  border-color: #00c0ef;
 }
 .info-box.bg-aqua .info-box-icon {
-  color: #E68FAC !important;
+  color: #00c0ef !important;
 }
 .info-box.bg-green {
-  border-color: #4F7942;
-  /* Uses our new leafy green */
+  border-color: #00a65a;
 }
 .info-box.bg-green .info-box-icon {
-  color: #4F7942 !important;
+  color: #00a65a !important;
 }
 .info-box.bg-yellow {
-  border-color: #F3D34A;
-  /* Uses our new soft yellow */
+  border-color: #f39c12;
 }
 .info-box.bg-yellow .info-box-icon {
-  color: #F3D34A !important;
+  color: #f39c12 !important;
 }
 .info-box.bg-red {
   border-color: #dd4b39;
@@ -1310,23 +1303,22 @@ Radio toggle styles for permission settings and check/uncheck all
   color: #dd4b39 !important;
 }
 .info-box.bg-purple {
-  border-color: #A4508B;
-  /* Uses our new related pink */
+  border-color: #605ca8;
 }
 .info-box.bg-purple .info-box-icon {
-  color: #A4508B !important;
+  color: #605ca8 !important;
 }
 .info-box.bg-orange {
-  border-color: #FF8C00;
+  border-color: #ff851b;
 }
 .info-box.bg-orange .info-box-icon {
-  color: #FF8C00 !important;
+  color: #ff851b !important;
 }
 .info-box.bg-maroon {
-  border-color: #D81B60;
+  border-color: #d81b60;
 }
 .info-box.bg-maroon .info-box-icon {
-  color: #D81B60 !important;
+  color: #d81b60 !important;
 }
 h1,
 h2,
@@ -1345,10 +1337,6 @@ h4,
 /* =============================================
    ENHANCED SEARCH BOX STYLES
    ============================================= */
-/*
- * Component: Search Box
- * ------------------
- */
 .search-box {
   position: relative;
   background: #f2f5fa;
@@ -1381,14 +1369,15 @@ h4,
   opacity: 0.8;
 }
 /* =============================================
-   ENHANCED SIDEBAR STYLES
+   ENHANCED SIDEBAR STYLES - UPDATED TO WHITE THEME
    ============================================= */
 .main-sidebar {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #fff !important;
 }
 @media (max-width: 767px) {
   .main-sidebar {
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     transform: translateX(-100%);
   }
   .sidebar-open .main-sidebar {
@@ -1397,6 +1386,7 @@ h4,
 }
 .sidebar {
   padding-bottom: 10px;
+  background-color: #fff !important;
 }
 .sidebar-form input:focus {
   border-color: transparent;
@@ -1406,7 +1396,7 @@ h4,
   width: 100%;
   padding: 15px 10px;
   overflow: hidden;
-  border-bottom: 1px solid #34495e;
+  border-bottom: 1px solid #e0e0e0 !important;
 }
 .user-panel > .image > img {
   width: 100%;
@@ -1423,7 +1413,7 @@ h4,
 .user-panel > .info > p {
   font-weight: 600;
   margin-bottom: 9px;
-  color: #ecf0f1;
+  color: #333 !important;
   font-size: 14px;
 }
 .user-panel > .info > a {
@@ -1431,7 +1421,7 @@ h4,
   padding-right: 5px;
   margin-top: 3px;
   font-size: 11px;
-  color: #bdc3c7;
+  color: #666 !important;
 }
 .user-panel > .info > a > .fa,
 .user-panel > .info > a > .ion,
@@ -1439,11 +1429,11 @@ h4,
   margin-right: 3px;
 }
 .user-panel > .info > a:hover {
-  color: #ecf0f1;
+  color: #000 !important;
 }
 .user-panel {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid #e0e0e0 !important;
+  background: rgba(0, 0, 0, 0.02);
 }
 .user-panel > .info > p {
   font-size: 13px;
@@ -1462,6 +1452,7 @@ h4,
   list-style: none;
   margin: 0;
   padding: 10px 0;
+  background-color: #fff !important;
 }
 .sidebar-menu > li {
   position: relative;
@@ -1471,35 +1462,36 @@ h4,
 .sidebar-menu > li > a {
   padding: 12px 15px;
   display: block;
-  color: #b8c7ce;
+  color: #333 !important;
   border-left: 3px solid transparent;
   transition: all 0.3s ease;
+  background-color: #fff !important;
 }
 .sidebar-menu > li > a > .fa,
 .sidebar-menu > li > a > .glyphicon,
 .sidebar-menu > li > a > .ion {
   width: 20px;
-  color: rgba(255, 255, 255, 0.7);
+  color: #666 !important;
 }
 .sidebar-menu > li > a:hover {
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.1);
+  color: #000 !important;
+  background-color: #f5f5f5 !important;
   border-left-color: #3c8dbc;
 }
 .sidebar-menu > li > a:hover > .fa,
 .sidebar-menu > li > a:hover > .glyphicon,
 .sidebar-menu > li > a:hover > .ion {
-  color: #fff;
+  color: #000 !important;
 }
 .sidebar-menu > li.active > a {
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.1);
+  color: #000 !important;
+  background-color: #f0f0f0 !important;
   border-left-color: #3c8dbc;
 }
 .sidebar-menu > li.active > a > .fa,
 .sidebar-menu > li.active > a > .glyphicon,
 .sidebar-menu > li.active > a > .ion {
-  color: #fff;
+  color: #000 !important;
 }
 .sidebar-menu > li .label,
 .sidebar-menu > li .badge {
@@ -1509,16 +1501,17 @@ h4,
 }
 .sidebar-menu > li .badge {
   margin-top: 3px;
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background-color: #3c8dbc !important;
+  color: #fff !important;
 }
 .sidebar-menu li.header {
   padding: 10px 25px 10px 15px;
   font-size: 12px;
-  color: #4b646f;
-  background: #1a2226;
+  color: #666 !important;
+  background: #f8f8f8 !important;
   text-transform: uppercase;
   letter-spacing: 1px;
+  border-bottom: 1px solid #e0e0e0 !important;
 }
 .sidebar-menu li > a > .fa-angle-left,
 .sidebar-menu li > a > .pull-right-container > .fa-angle-left {
@@ -1526,7 +1519,7 @@ h4,
   height: auto;
   padding: 0;
   margin-right: 10px;
-  color: rgba(255, 255, 255, 0.7);
+  color: #666 !important;
 }
 .sidebar-menu li > a > .fa-angle-left {
   position: absolute;
@@ -1536,17 +1529,17 @@ h4,
 }
 .sidebar-menu .menu-open > a > .fa-angle-left,
 .sidebar-menu .menu-open > a > .pull-right-container > .fa-angle-left {
-  color: #fff;
+  color: #000 !important;
 }
 .sidebar-menu .menu-open > a {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: #f5f5f5 !important;
 }
 .sidebar-menu .active > .treeview-menu {
   display: block;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #f8f8f8 !important;
 }
 .sidebar-menu > li.active > a {
-  background: linear-gradient(90deg, rgba(59, 130, 246, 0.15) 0%, transparent 100%);
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, transparent 100%);
   box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.1);
 }
 .sidebar-menu > li.active > a::before {
@@ -1568,21 +1561,26 @@ h4,
   margin-right: 8px;
 }
 .sidebar-menu > li.treeview.menu-open > a {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: #f5f5f5 !important;
 }
 .sidebar-menu > li.treeview.menu-open > a > .fa-angle-left,
 .sidebar-menu > li.treeview.menu-open > a > .pull-right-container > .fa-angle-left {
   transform: rotate(-90deg);
 }
 .sidebar-menu > li.treeview.menu-open > .treeview-menu {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%);
-  border-left: 2px solid rgba(60, 141, 188, 0.3);
+  background: #f8f8f8 !important;
+  border-left: 2px solid rgba(60, 141, 188, 0.2);
   margin-left: 8px;
   border-radius: 0 0 4px 4px;
+}
+.sidebar-menu .treeview-menu {
+  background-color: #f8f8f8 !important;
 }
 .sidebar-menu .treeview-menu > li > a {
   transition: all 0.2s ease;
   position: relative;
+  color: #555 !important;
+  background-color: #f8f8f8 !important;
 }
 .sidebar-menu .treeview-menu > li > a::before {
   content: '';
@@ -1592,14 +1590,15 @@ h4,
   transform: translateY(-50%);
   width: 4px;
   height: 4px;
-  background-color: #8aa4af;
+  background-color: #999;
   border-radius: 50%;
   transition: all 0.2s ease;
   opacity: 0;
 }
 .sidebar-menu .treeview-menu > li > a:hover {
   padding-left: 45px;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: #f0f0f0 !important;
+  color: #000 !important;
 }
 .sidebar-menu .treeview-menu > li > a:hover::before {
   opacity: 1;
@@ -1607,8 +1606,8 @@ h4,
   transform: translateY(-50%) scale(1.2);
 }
 .sidebar-menu .treeview-menu > li.active > a {
-  background-color: rgba(60, 141, 188, 0.15);
-  color: #fff;
+  background-color: rgba(60, 141, 188, 0.1) !important;
+  color: #000 !important;
   padding-left: 35px;
 }
 .sidebar-menu .treeview-menu > li.active > a::before {
@@ -1625,11 +1624,11 @@ h4,
 .sidebar-menu .treeview-menu > li.active > a > .fa,
 .sidebar-menu .treeview-menu > li.active > a > .glyphicon,
 .sidebar-menu .treeview-menu > li.active > a > .ion {
-  color: #fff;
+  color: #000 !important;
 }
 .sidebar-menu li.header {
-  background: linear-gradient(90deg, #1a2226 0%, #2c3b41 100%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: #f0f0f0 !important;
+  border-bottom: 1px solid #ddd !important;
   font-weight: 600;
   letter-spacing: 0.5px;
   padding: 12px 25px 12px 15px;
@@ -1642,7 +1641,7 @@ h4,
   left: 15px;
   right: 15px;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, #ddd 50%, transparent 100%);
 }
 .sidebar-menu .badge {
   font-size: 9px;
@@ -1654,46 +1653,33 @@ h4,
 }
 .sidebar-menu .badge.badge-success {
   background-color: #00a65a;
+  color: #fff;
 }
 .sidebar-menu .badge.badge-warning {
   background-color: #f39c12;
+  color: #fff;
 }
 .sidebar-menu .badge.badge-danger {
   background-color: #dd4b39;
+  color: #fff;
 }
 .sidebar-menu .badge.badge-info {
   background-color: #00c0ef;
+  color: #fff;
 }
 .sidebar-menu .divider {
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #e0e0e0 !important;
   margin: 8px 15px;
 }
 .sidebar-menu .badge {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background-color: #3c8dbc !important;
+  color: #fff !important;
   font-weight: normal;
 }
 .sidebar-menu .badge.badge-secondary {
   background-color: #6c757d;
-}
-.text-blue {
-  color: #3498db !important;
-}
-.text-green {
-  color: #2ecc71 !important;
-}
-.text-orange {
-  color: #e67e22 !important;
-}
-.text-red {
-  color: #e74c3c !important;
-}
-.text-yellow {
-  color: #f1c40f !important;
-}
-.text-grey {
-  color: #95a5a6 !important;
+  color: #fff;
 }
 .sidebar-menu > li > a {
   position: relative;
@@ -1706,7 +1692,7 @@ h4,
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
   transition: left 0.5s;
 }
 .sidebar-menu > li > a:hover:after {
@@ -1734,7 +1720,7 @@ h4,
 }
 @media (max-width: 767px) {
   .main-sidebar {
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
   }
 }
 @keyframes slideIn {
@@ -1789,7 +1775,6 @@ h4,
 /* =============================================
    ENHANCED DASHBOARD BOX STYLES
    ============================================= */
-/* small box dashboard */
 .dashboard.small-box {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -1836,7 +1821,6 @@ h4,
   background: rgba(0, 0, 0, 0.2);
   color: white;
 }
-/* color for every small box */
 .dashboard.bg-teal {
   background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%) !important;
 }
@@ -1860,7 +1844,6 @@ h4,
 .dashboard.bg-light-blue {
   background: linear-gradient(135deg, #17a2b8 0%, #138496 100%) !important;
 }
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .dashboard.small-box .icon {
     font-size: 50px;
@@ -1875,7 +1858,6 @@ h4,
 /* =============================================
    ENHANCED BOX & BOX HEADER STYLES
    ============================================= */
-/* Override box & box-header */
 .box {
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
@@ -1929,7 +1911,6 @@ h4,
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-/* Table styling dalam box */
 .box .table-responsive {
   border-radius: 6px;
 }
@@ -1949,26 +1930,22 @@ h4,
   padding: 10px 8px;
   border-color: #f0f0f0;
 }
-/* Chart box styling - FIXED */
 .box .chart-responsive {
   position: relative;
   height: 260px;
   width: 100%;
 }
-/* Fix untuk canvas chart */
 #statusPieChart {
   width: 100% !important;
   height: 260px !important;
   max-width: 100%;
   display: block;
 }
-/* Container untuk chart yang responsive */
 .chart-container {
   position: relative;
   height: 260px;
   width: 100%;
 }
-/* Button dalam box */
 .box .btn {
   border-radius: 6px;
   font-weight: 500;
@@ -1978,7 +1955,6 @@ h4,
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
 }
-/* Progress bar styling */
 .box .progress {
   border-radius: 10px;
   height: 12px;
@@ -1989,7 +1965,6 @@ h4,
   border-radius: 10px;
   background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
 }
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .box {
     border-radius: 8px;
@@ -2004,7 +1979,6 @@ h4,
   .box-title {
     font-size: 16px;
   }
-  /* Fix chart untuk mobile */
   .box .chart-responsive {
     height: 220px;
   }
@@ -2012,11 +1986,6 @@ h4,
     height: 220px !important;
   }
 }
-/* Styling untuk box dengan border top berwarna */
-.box.box-default {
-  border-top: 3px solid #d2d6de;
-}
-/* Jika ingin warna yang berbeda untuk berbagai jenis box */
 .box-primary {
   border-top-color: #3c8dbc !important;
 }
@@ -2035,27 +2004,6 @@ h4,
 /* =============================================
    PIE TO DONUT CHART STYLES
    ============================================= */
-/* Chart box styling */
-.box .chart-responsive {
-  position: relative;
-  height: 260px;
-  width: 100%;
-}
-/* Fix untuk canvas chart donut */
-#statusPieChart {
-  width: 100% !important;
-  height: 260px !important;
-  max-width: 100%;
-  display: block;
-}
-/* Container untuk chart yang responsive */
-.chart-container {
-  position: relative;
-  height: 260px;
-  width: 100%;
-  margin: 0 auto;
-}
-/* Legend styling untuk donut chart */
 .chart-legend {
   list-style: none;
   padding: 0;
@@ -2074,7 +2022,6 @@ h4,
   margin-right: 5px;
   border-radius: 2px;
 }
-/* Responsive adjustments untuk donut chart */
 @media (max-width: 768px) {
   .box .chart-responsive {
     height: 220px;
@@ -2090,7 +2037,6 @@ h4,
 /* =============================================
    SEARCH INPUT STYLES - SLIGHTLY ROUNDED
    ============================================= */
-/* Override untuk search input */
 .form-control {
   border-radius: 6px !important;
   border: 1px solid #d2d6de;
@@ -2103,7 +2049,6 @@ h4,
   box-shadow: 0 0 0 0.2rem rgba(60, 141, 188, 0.25);
   outline: none;
 }
-/* Khusus untuk search input di sidebar */
 .sidebar-form {
   border-radius: 6px !important;
   border: 1px solid #d2d6de;
@@ -2121,7 +2066,6 @@ h4,
 .sidebar-form .form-control:focus {
   box-shadow: none;
 }
-/* Search input dalam navbar */
 .navbar-nav .form-control {
   border-radius: 6px;
   border: 1px solid #d2d6de;
@@ -2129,7 +2073,6 @@ h4,
   font-size: 13px;
   margin-top: 8px;
 }
-/* Input group dengan rounded sedikit */
 .input-group .form-control:first-child {
   border-radius: 6px 0 0 6px !important;
 }
@@ -2142,17 +2085,12 @@ h4,
 .input-group .input-group-addon:last-child {
   border-radius: 0 6px 6px 0 !important;
 }
-/* Search input dengan icon */
-.input-group .form-control {
-  border-radius: 0 !important;
-}
 .input-group:not(.has-feedback) .form-control:first-child {
   border-radius: 6px 0 0 6px !important;
 }
 .input-group:not(.has-feedback) .form-control:last-child {
   border-radius: 0 6px 6px 0 !important;
 }
-/* Placeholder styling */
 .form-control::-moz-placeholder {
   color: #999;
   font-style: italic;
@@ -2161,11 +2099,9 @@ h4,
   color: #999;
   font-style: italic;
 }
-/* Hover effects */
 .form-control:hover {
   border-color: #b5b5b5;
 }
-/* Size variations */
 .form-control-sm {
   border-radius: 4px !important;
   padding: 4px 12px;
@@ -2176,13 +2112,11 @@ h4,
   padding: 12px 20px;
   font-size: 16px;
 }
-/* Disabled state */
 .form-control:disabled {
   background-color: #f8f9fa;
   border-color: #e9ecef;
   border-radius: 6px !important;
 }
-/* Error state */
 .form-control.error {
   border-color: #dd4b39;
   border-radius: 6px !important;
@@ -2191,7 +2125,6 @@ h4,
   border-color: #dd4b39;
   box-shadow: 0 0 0 0.2rem rgba(221, 75, 57, 0.25);
 }
-/* Success state */
 .form-control.success {
   border-color: #00a65a;
   border-radius: 6px !important;
@@ -2200,7 +2133,6 @@ h4,
   border-color: #00a65a;
   box-shadow: 0 0 0 0.2rem rgba(0, 166, 90, 0.25);
 }
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .form-control {
     border-radius: 4px !important;
@@ -2214,7 +2146,6 @@ h4,
     margin-top: 6px;
   }
 }
-/* Custom search input dengan icon di dalam */
 .search-input-container {
   position: relative;
 }
@@ -2230,7 +2161,6 @@ h4,
   color: #999;
   z-index: 3;
 }
-/* Untuk input group dengan button */
 .input-group-rounded .form-control {
   border-radius: 6px 0 0 6px !important;
 }
@@ -2238,7 +2168,6 @@ h4,
   border-radius: 0 6px 6px 0 !important;
   border-left: none;
 }
-/* Full rounded input group */
 .input-group-full-rounded .form-control {
   border-radius: 6px !important;
   border-right: none;
@@ -2250,114 +2179,136 @@ h4,
 /* =============================================
    MOBILE SEARCH INPUT STYLES
    ============================================= */
-/* Mobile search button styling */
-.mobile-search-btn {
-  display: block !important;
-  padding: 15px 10px !important;
-  color: white !important;
-  font-size: 18px !important;
-}
-.mobile-search-btn:hover,
-.mobile-search-btn:focus {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-  color: white !important;
-}
-/* Hide search form on mobile */
-.navbar-nav .navbar-form {
-  margin-right: 15px;
-}
 @media (max-width: 767px) {
-  .navbar-nav .navbar-form.hidden-xs {
-    display: none !important;
+  /* Container untuk mobile search */
+  .mobile-search-container {
+    position: relative;
+    display: inline-block;
   }
-  .mobile-search-btn {
-    display: inline-block !important;
+  /* Tombol toggle search mobile */
+  .mobile-search-toggle-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    color: white;
+    cursor: pointer;
   }
-}
-@media (min-width: 768px) {
-  .mobile-search-btn {
-    display: none !important;
+  .mobile-search-toggle-btn:hover {
+    color: #ddd;
+    text-decoration: none;
   }
-  .navbar-nav .navbar-form.hidden-xs {
+  /* Form search mobile - MODIFIKASI POSISI */
+  .mobile-search-form {
+    position: fixed;
+    /* GANTI DARI absolute KE fixed */
+    top: 50px;
+    /* Jarak dari atas */
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    width: 90%;
+    max-width: 400px;
+    display: none;
+  }
+  .mobile-search-form.show {
     display: block !important;
+    animation: fadeIn 0.3s ease;
+  }
+  /* Animasi untuk fade in */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+  /* Overlay untuk background gelap */
+  .mobile-search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    display: none;
+  }
+  .mobile-search-overlay.show {
+    display: block;
+    animation: fadeInOverlay 0.3s ease;
+  }
+  @keyframes fadeInOverlay {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  /* Search box dalam mobile */
+  .mobile-search-form .search-box {
+    display: flex;
+    width: 100%;
+  }
+  .mobile-search-form input[type="text"] {
+    flex: 1;
+    padding: 10px 15px;
+    border: 2px solid #C24683;
+    border-radius: 4px 0 0 4px;
+    font-size: 16px;
+    outline: none;
+  }
+  .mobile-search-form input[type="text"]:focus {
+    border-color: #717171;
+  }
+  .mobile-search-form button {
+    padding: 10px 20px;
+    background: #C24683;
+    color: white;
+    border: 2px solid #717171;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+  }
+  .mobile-search-form button:hover {
+    background: #717171;
+  }
+  /* Tombol close untuk mobile search */
+  .mobile-search-close {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    background: white;
+    color: #333;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
 }
-/* Modal search input styling */
-#mobileSearchModal .modal-dialog {
-  margin: 0;
-  width: 100%;
-  max-width: 100%;
-  height: 100%;
-}
-#mobileSearchModal .modal-content {
-  border-radius: 0;
-  height: 100%;
-  border: none;
-}
-#mobileSearchModal .modal-header {
-  color: white;
-  border-bottom: none;
-  padding: 15px 20px;
-}
-#mobileSearchModal .modal-body {
-  padding: 30px 20px;
-}
-#mobileSearchModal .close {
-  color: white;
-  opacity: 0.8;
-  text-shadow: none;
-}
-#mobileSearchModal .close:hover {
-  opacity: 1;
-}
-#mobileSearchModal .form-control {
-  height: 50px;
-  font-size: 16px;
-  border-radius: 6px;
-}
-#mobileSearchModal .btn-primary {
-  height: 50px;
-  border-radius: 6px;
-  font-size: 16px;
-}
-/* Input group styling untuk modal */
-#mobileSearchModal .input-group {
-  width: 100%;
-}
-#mobileSearchModal .input-group-btn .btn {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-/* Clear button styling */
-.clear-search {
-  position: absolute;
-  right: 60px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: #999;
-  cursor: pointer;
-  padding: 0 8px;
-  font-size: 18px;
-  line-height: 1;
-  z-index: 4;
-  display: none;
-}
-.clear-search:hover {
-  color: #666;
-}
-#mobileSearchModal .input-group {
-  position: relative;
-}
-/* Adjust input padding untuk clear button */
-#mobileSearchModal .form-control {
-  padding-right: 40px;
+/* Sembunyikan container mobile di desktop */
+@media (min-width: 768px) {
+  .mobile-search-container {
+    display: none !important;
+  }
 }
 /* =============================================
    MODAL STYLES - CONSISTENT WITH BOX DESIGN
    ============================================= */
-/* Modal header styling to match box-header */
 .modal-header {
   border-bottom: 1px solid #eaeaea;
   padding: 15px 20px;
@@ -2373,19 +2324,16 @@ h4,
   margin: 0;
   line-height: 1.4;
 }
-/* Modal body styling to match box-body */
 .modal-body {
   padding: 20px;
   background: #fff;
 }
-/* Modal content styling to match box */
 .modal-content {
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   border: 1px solid #eaeaea;
   background: #fff;
 }
-/* Modal footer styling */
 .modal-footer {
   border-top: 1px solid #f4f4f4;
   padding: 15px 20px;
@@ -2393,7 +2341,6 @@ h4,
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-/* Close button styling */
 .modal-header .close {
   font-size: 21px;
   font-weight: 700;
@@ -2409,14 +2356,12 @@ h4,
   color: #333;
   opacity: 1;
 }
-/* Modal backdrop */
 .modal-backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
 .modal-backdrop.show {
   opacity: 0.5;
 }
-/* Specific styling for different modal sizes */
 .modal-sm .modal-content {
   max-width: 300px;
 }
@@ -2426,7 +2371,6 @@ h4,
 .modal-xl .modal-content {
   max-width: 1140px;
 }
-/* Form elements inside modal */
 .modal-body .form-group {
   margin-bottom: 15px;
 }
@@ -2445,7 +2389,6 @@ h4,
   color: #555;
   margin-bottom: 5px;
 }
-/* Buttons in modal footer */
 .modal-footer .btn {
   border-radius: 6px;
   font-weight: 500;
@@ -2461,7 +2404,6 @@ h4,
   transform: translateY(-1px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-/* Table styling inside modal */
 .modal-body .table {
   margin-bottom: 0;
 }
@@ -2478,13 +2420,11 @@ h4,
   padding: 10px 8px;
   border-color: #f0f0f0;
 }
-/* Alert messages inside modal */
 .modal-body .alert {
   border-radius: 6px;
   margin-bottom: 15px;
   border: none;
 }
-/* Progress bars inside modal */
 .modal-body .progress {
   border-radius: 10px;
   height: 12px;
@@ -2494,7 +2434,6 @@ h4,
 .modal-body .progress-bar {
   border-radius: 10px;
 }
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .modal-content {
     border-radius: 8px;
@@ -2517,8 +2456,6 @@ h4,
     font-size: 16px;
   }
 }
-/* Animation for modal appearance */
-/* Specific modal types */
 .modal-danger .modal-header {
   border-top: 3px solid #dd4b39;
 }
@@ -2534,7 +2471,6 @@ h4,
 .modal-primary .modal-header {
   border-top: 3px solid #3c8dbc;
 }
-/* Fullscreen modal adjustments */
 .modal-fullscreen .modal-content {
   border-radius: 0;
   border: none;
@@ -2555,16 +2491,13 @@ h4,
   background-color: rgba(255, 255, 255, 0.1) !important;
   color: white !important;
 }
-/* Ikon + untuk mobile */
 .create-dropdown .create-mobile-btn {
   font-size: 18px !important;
   padding: 15px 12px !important;
 }
-/* Tampilan desktop - teks "Create New" */
 .create-dropdown .hidden-xs {
   font-size: 14px !important;
 }
-/* Responsive behavior */
 @media (max-width: 767px) {
   .create-dropdown .hidden-xs {
     display: none !important;
@@ -2572,7 +2505,6 @@ h4,
   .create-dropdown .create-mobile-btn {
     display: inline-block !important;
   }
-  /* Styling untuk dropdown menu pada mobile */
   .create-dropdown .dropdown-menu {
     position: absolute !important;
     right: 0 !important;
@@ -2590,14 +2522,12 @@ h4,
     display: inline-block !important;
   }
 }
-/* Animasi untuk ikon plus */
 .create-dropdown .fa-plus {
   transition: transform 0.3s ease;
 }
 .create-dropdown.open .fa-plus {
   transform: rotate(45deg);
 }
-/* Styling untuk dropdown menu item pada mobile */
 @media (max-width: 767px) {
   .create-dropdown .dropdown-menu li a {
     padding: 12px 20px !important;
