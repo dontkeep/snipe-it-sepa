@@ -103,6 +103,11 @@
                 </label>
 
                 <label class="form-control">
+                    <input type="checkbox" name="company_id" value="1" @checked($template->checkmarkValue('company_id')) />
+                    {{ trans('general.company_id') }}
+                </label>
+
+                <label class="form-control">
                     <input type="checkbox" name="asset_tag" value="1" @checked($template->checkmarkValue('asset_tag')) />
                     {{ trans('general.asset_tag') }}
                 </label>

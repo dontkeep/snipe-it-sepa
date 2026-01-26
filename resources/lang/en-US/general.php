@@ -82,6 +82,7 @@ return [
     'clear_selection'		=> 'Clear Selection',
     'companies'			    => 'Companies',
     'company'				=> 'Company',
+    'company_id'            => 'Company ID',
     'component'			    => 'Component',
     'components'			=> 'Components',
     'complete'				=> 'Complete',

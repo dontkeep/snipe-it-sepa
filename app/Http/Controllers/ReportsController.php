@@ -449,6 +449,10 @@ class ReportsController extends Controller
                 $header[] = trans('general.company');
             }
 
+            if ($request->filled('company_id')) {
+                $header[] = trans('general.company_id');
+            }
+
             if ($request->filled('asset_name')) {
                 $header[] = trans('admin/hardware/form.name');
             }
@@ -771,6 +775,10 @@ class ReportsController extends Controller
 
                     if ($request->filled('company')) {
                         $row[] = ($asset->company) ? $asset->company->name : '';
+                    }
+
+                    if ($request->filled('company_id')) {
+                        $row[] = ($asset->company) ? $asset->company->id : '';
                     }
 
                     if ($request->filled('asset_name')) {

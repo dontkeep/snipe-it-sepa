@@ -212,6 +212,35 @@ class AssetImporter extends ItemImporter
 
             return;
         }
+
+        // Tambahkan ini untuk menangani company_id
+        $company_id = $this->findCsvMatch($row, 'company_id');
+        
+        if ($company_id) {
+            // Validasi company_id
+            $company = \App\Models\Company::find($company_id);
+            if ($company) {
+                $this->item['company_id'] = $company_id;
+                $this->log('Company ID found: ' . $company_id);
+            } else {
+                $error_msg = trans('general.import_company_not_found', ['company_id' => $company_id]);
+                $this->log($error_msg);
+                $this->addErrorToBag($asset, 'company_id', $error_msg);
+                return $error_msg;
+            }
+        } else if ($this->findCsvMatch($row, 'company')) {
+            // Jika menggunakan nama company (existing logic)
+            $this->item['company_id'] = $this->createOrFetchCompany($row);
+        } else {
+            // Jika company_id required dan tidak ada di CSV
+            if (Setting::getSettings()->require_company_id) {
+                $error_msg = trans('validation.required', ['attribute' => 'company id']);
+                $this->log($error_msg);
+                $this->addErrorToBag($asset, 'company_id', $error_msg);
+                return $error_msg;
+            }
+        }
+
         $this->logError($asset, 'Asset "'.$this->item['name'].'"');
     }
 
