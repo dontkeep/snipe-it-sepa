@@ -17,7 +17,7 @@ class Label implements View
     use Macroable { __call as macroCall; }
 
     protected const NAME = 'label';
-
+    // this is test
     /**
      * A Collection of passed data.
      *
