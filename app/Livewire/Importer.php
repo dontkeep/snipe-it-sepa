@@ -211,6 +211,7 @@ class Importer extends Component
             'byod' => trans('general.byod'),
             'category' => trans('general.category'),
             'company' => trans('general.company'),
+            'company_id' => trans('general.company_id'),
             'image' => trans('general.importer.image_filename'),
             'item_name' => trans('general.item_name_var', ['item' => trans('general.asset')]),
             'location' => trans('general.location'),
