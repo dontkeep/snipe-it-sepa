@@ -580,6 +580,13 @@ Route::group(['prefix' => 'reports', 'middleware' => ['auth']], function () {
 
 });
 
+// FAQ Route
+Route::get('faq', function () {
+    return view('faq.index');
+})->middleware('auth')->name('faq.index')
+    ->breadcrumbs(fn (Trail $trail) =>
+    $trail->parent('home')
+        ->push(trans('general.faq'), route('faq.index')));
 
 Route::get(
     'auth/signin',

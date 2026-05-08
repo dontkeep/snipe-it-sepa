@@ -850,6 +850,14 @@ dir="{{ Helper::determineLanguageDirection() }}">
                             </li>
                         @endcan
 
+                        <!-- FAQ Menu Item -->
+                        <li{!! (request()->is('faq') ? ' class="active"' : '') !!}>
+                            <a href="{{ route('faq.index') }}">
+                                <x-icon type="help" class="fa-fw" />
+                                <span>{{ trans('general.faq') }}</span>
+                            </a>
+                        </li>
+
 
                     </ul>
                 </section>
