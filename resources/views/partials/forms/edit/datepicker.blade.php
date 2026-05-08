@@ -1,6 +1,11 @@
 <!-- Datepicker -->
 <div class="form-group{{ $errors->has($fieldname) ? ' has-error' : '' }}">
-    <label for="{{ $fieldname }}" class="col-md-3 control-label">{{ $translated_name }}</label>
+    <label for="{{ $fieldname }}" class="col-md-3 control-label">
+        {{ $translated_name }}
+        @if(isset($tooltip_text))
+            @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => $tooltip_text])
+        @endif
+    </label>
     <div class="input-group col-md-4">
         <x-input.datepicker
                 name="{{ $fieldname }}"

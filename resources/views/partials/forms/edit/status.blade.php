@@ -1,6 +1,9 @@
 <!-- Status -->
 <div class="form-group {{ $errors->has('status_id') ? ' has-error' : '' }}">
-    <label for="status_id" class="col-md-3 control-label">{{ trans('admin/hardware/form.status') }}</label>
+    <label for="status_id" class="col-md-3 control-label">
+        {{ trans('admin/hardware/form.status') }}
+        @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => trans('admin/field_help.asset.status')])
+    </label>
     <div class="col-md-7 col-sm-11">
         <x-input.select
             name="status_id"

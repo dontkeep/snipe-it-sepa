@@ -22,6 +22,7 @@
     <div class="form-group {{ $errors->has('company_id') ? ' has-error' : '' }}">
         <label for="company_id" class="col-md-3 control-label">
             {{ trans('general.company') }}
+            @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => trans('admin/field_help.asset.company')])
         </label>
         <div class="col-md-8 required">
             @if (($snipeSettings->full_multiple_companies_support=='1') && (!Auth::user()->isSuperUser()))
@@ -55,6 +56,7 @@
     <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
         <label for="name" class="col-md-3 control-label">
             {{ trans('admin/hardware/form.name') }}
+            @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => trans('admin/field_help.asset.name')])
         </label>
         <div class="col-md-7 col-sm-12 required">
             <input class="form-control" type="text" name="name" id="name" value="{{ old('name', $item->name) }}" required>
@@ -64,7 +66,10 @@
 
   <!-- Asset Tag -->
   <div class="form-group {{ $errors->has('asset_tag') ? ' has-error' : '' }}">
-    <label for="asset_tag" class="col-md-3 control-label">{{ trans('admin/hardware/form.tag') }}</label>
+    <label for="asset_tag" class="col-md-3 control-label">
+        {{ trans('admin/hardware/form.tag') }}
+        @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => trans('admin/field_help.asset.tag')])
+    </label>
 
 
 
@@ -94,12 +99,12 @@
       @endif
   </div>
 
-    @include ('partials.forms.edit.serial', ['fieldname'=> 'serials[1]', 'old_val_name' => 'serials.1', 'translated_serial' => trans('admin/hardware/form.serial')])
+    @include ('partials.forms.edit.serial', ['fieldname'=> 'serials[1]', 'old_val_name' => 'serials.1', 'translated_serial' => trans('admin/hardware/form.serial'), 'tooltip_text' => trans('admin/field_help.asset.serial')])
 
     <div class="input_fields_wrap">
     </div>
 
-    @include ('partials.forms.edit.model-select', ['translated_name' => trans('admin/hardware/form.model'), 'fieldname' => 'model_id', 'field_req' => true])
+    @include ('partials.forms.edit.model-select', ['translated_name' => trans('admin/hardware/form.model'), 'fieldname' => 'model_id', 'field_req' => true, 'tooltip_text' => trans('admin/field_help.asset.model')])
 
 
     @include ('partials.forms.edit.status', [ 'required' => 'true'])
@@ -115,7 +120,8 @@
         'translated_name' => trans('admin/hardware/form.default_location'), 
         'fieldname' => 'rtd_location_id', 
         'help_text' => trans('general.rtd_location_help'), 
-        'required' => 'true'
+        'required' => 'true',
+        'tooltip_text' => trans('admin/field_help.asset.rtd_location')
     ])
     @include ('partials.forms.edit.requestable', ['requestable_text' => trans('admin/hardware/general.requestable')])
 

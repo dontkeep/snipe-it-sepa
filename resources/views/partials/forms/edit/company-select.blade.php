@@ -7,6 +7,9 @@
             @if (isset($required) && $required)
                 <sup>*</sup>
             @endif
+            @if(isset($tooltip_text))
+                @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => $tooltip_text])
+            @endif
         </label>
         <div class="col-md-6">
             <select class="js-data-ajax" disabled="true" data-endpoint="companies" data-placeholder="{{ trans('general.select_company') }}" name="{{ $fieldname }}" style="width: 100%" id="company_select" aria-label="{{ $fieldname }}"{{ (isset($multiple) && ($multiple=='true')) ? " multiple='multiple'" : '' }}{{ (isset($required) && $required) ? ' required' : '' }}>
@@ -28,6 +31,9 @@
             {{ $translated_name }}
             @if (isset($required) && $required)
                 <sup>*</sup>
+            @endif
+            @if(isset($tooltip_text))
+                @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => $tooltip_text])
             @endif
         </label>
         <div class="col-md-8">

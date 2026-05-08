@@ -6,7 +6,12 @@
     $value = $value ?? $user->last_name;
 @endphp
 <div class="form-group {{ $errors->has('last_name') ? 'has-error' : '' }}">
-    <label class="col-md-3 control-label" for="last_name">{{ trans('general.last_name') }} </label>
+    <label class="col-md-3 control-label" for="last_name">
+        {{ trans('general.last_name') }}
+        @if(isset($tooltip_text))
+            @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => $tooltip_text])
+        @endif
+    </label>
     <div class="{{$class}}" style= "{{$style ? $style : ''}}">
         <input class="form-control" type="text" name="last_name" id="last_name"  value="{{ old('last_name', ($value ?? $user->last_name)) }}" maxlength="191"{{  (Helper::checkIfRequired($user, 'last_name')) ? ' required' : '' }} />
         {!! $errors->first('last_name', '<span class="alert-msg" aria-hidden="true">:message</span>') !!}

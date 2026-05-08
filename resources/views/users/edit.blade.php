@@ -57,16 +57,17 @@
             <div class="row">
               <div class="col-md-12">
                 <!-- First Name -->
-                 @include('partials.forms.edit.name-first')
+                 @include('partials.forms.edit.name-first', ['tooltip_text' => trans('admin/field_help.user.first_name')])
 
                 <!-- Last Name -->
-                @include('partials.forms.edit.name-last')
+                @include('partials.forms.edit.name-last', ['tooltip_text' => trans('admin/field_help.user.last_name')])
 
                 <!-- Username -->
                 <div class="form-group {{ $errors->has('username') ? 'has-error' : '' }}">
 
                   <label class="col-md-3 control-label" for="username">
                       {{ trans('admin/users/table.username') }}
+                      @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => trans('admin/field_help.user.username')])
                   </label>
 
                   <div class="col-md-6">
@@ -116,6 +117,7 @@
 
                   <label class="col-md-3 control-label" for="password">
                     {{ trans('admin/users/table.password') }}
+                    @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => trans('admin/field_help.user.password')])
                   </label>
 
                   <div class="col-md-6">
@@ -233,7 +235,10 @@
 
                   <!-- Email -->
                 <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                  <label class="col-md-3 control-label" for="email">{{ trans('admin/users/table.email') }} </label>
+                  <label class="col-md-3 control-label" for="email">
+                    {{ trans('admin/users/table.email') }}
+                    @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => trans('admin/field_help.user.email')])
+                  </label>
                   <div class="col-md-6">
                         <input class="form-control" type="email" name="email" id="email" maxlength="191" value="{{ old('email', $user->email) }}" autocomplete="off"
                           readonly onfocus="this.removeAttribute('readonly');" required{!! (!Gate::allows('canEditAuthFields', $user)) || ((!Gate::allows('editableOnDemo')) && ($user->id)) ? ' style="cursor: not-allowed" disabled ' : '' !!}>
@@ -313,7 +318,8 @@
                                     @include ('partials.forms.edit.company-select', [
                                         'translated_name' => trans('general.select_company'), 
                                         'fieldname' => 'company_id',
-                                        'required' => true  // Tambahkan ini
+                                        'required' => true,
+                                        'tooltip_text' => trans('admin/field_help.user.company')
                                     ])
                                 @else
                                     @if ($user->company)
@@ -358,7 +364,10 @@
 
                               <!-- Employee Number -->
                               <div class="form-group {{ $errors->has('employee_num') ? 'has-error' : '' }}">
-                                  <label class="col-md-3 control-label" for="employee_num">{{ trans('general.employee_number') }}</label>
+                                  <label class="col-md-3 control-label" for="employee_num">
+                                    {{ trans('general.employee_number') }}
+                                    @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => trans('admin/field_help.user.employee_id')])
+                                  </label>
                                   <div class="col-md-6">
                                       <input
                                               class="form-control"
@@ -376,7 +385,10 @@
 
                               <!-- Jobtitle -->
                               <div class="form-group {{ $errors->has('jobtitle') ? 'has-error' : '' }}">
-                                  <label class="col-md-3 control-label" for="jobtitle">{{ trans('admin/users/table.title') }}</label>
+                                  <label class="col-md-3 control-label" for="jobtitle">
+                                    {{ trans('admin/users/table.title') }}
+                                    @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => trans('admin/field_help.user.employee_type')])
+                                  </label>
                                   <div class="col-md-6">
                                       <input
                                               class="form-control"
@@ -392,18 +404,21 @@
 
 
                               <!-- Manager -->
-                              @include ('partials.forms.edit.user-select', ['translated_name' => trans('admin/users/table.manager'), 'fieldname' => 'manager_id'])
+                              @include ('partials.forms.edit.user-select', ['translated_name' => trans('admin/users/table.manager'), 'fieldname' => 'manager_id', 'tooltip_text' => trans('admin/field_help.user.manager')])
 
                               <!-- Department -->
                               @include ('partials.forms.edit.department-select', [
                                 'translated_name' => trans('general.department'), 
-                                'fieldname' => 'department_id'
+                                'fieldname' => 'department_id',
+                                'tooltip_text' => trans('admin/field_help.user.department')
+                              ])
                               ])
 
                               @include ('partials.forms.edit.datepicker', [
                                 'translated_name' => trans('general.start_date'), 
                                 'fieldname' => 'start_date', 
                                 'item' => $user,
+                                'tooltip_text' => trans('admin/field_help.user.start_date'),
                                 'required' => true  // Tambahkan ini
                               ])
 
@@ -411,6 +426,7 @@
                                 'translated_name' => trans('general.end_date'), 
                                 'fieldname' => 'end_date', 
                                 'item' => $user,
+                                'tooltip_text' => trans('admin/field_help.user.end_date'),
                                 'required' => true  // Tambahkan ini
                               ])
 
@@ -459,12 +475,16 @@
                               <!-- Location -->
                                 @include ('partials.forms.edit.location-select', [
                                     'translated_name' => trans('general.location'), 
-                                    'fieldname' => 'location_id'
+                                    'fieldname' => 'location_id',
+                                    'tooltip_text' => trans('admin/field_help.user.location')
                                 ])
                                 
                               <!-- Phone -->
                               <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
-                                  <label class="col-md-3 control-label" for="phone">{{ trans('admin/users/table.phone') }}</label>
+                                  <label class="col-md-3 control-label" for="phone">
+                                    {{ trans('admin/users/table.phone') }}
+                                    @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => trans('admin/field_help.user.phone')])
+                                  </label>
                                   <div class="col-md-6">
                                       <input class="form-control" type="text" name="phone" id="phone" value="{{ old('phone', $user->phone) }}" maxlength="191" />
                                       {!! $errors->first('phone', '<span class="alert-msg" aria-hidden="true">:message</span>') !!}
@@ -473,7 +493,10 @@
 
                               <!-- Mobile -->
                               <div class="form-group {{ $errors->has('mobile') ? 'has-error' : '' }}">
-                                  <label class="col-md-3 control-label" for="phone">{{ trans('admin/users/table.mobile') }}</label>
+                                  <label class="col-md-3 control-label" for="phone">
+                                    {{ trans('admin/users/table.mobile') }}
+                                    @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => trans('admin/field_help.user.mobile')])
+                                  </label>
                                   <div class="col-md-6">
                                       <input class="form-control" type="text" name="mobile" id="mobile" value="{{ old('mobile', $user->mobile) }}" maxlength="191"  />
                                       {!! $errors->first('mobile', '<span class="alert-msg" aria-hidden="true">:message</span>') !!}

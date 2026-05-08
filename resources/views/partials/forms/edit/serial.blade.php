@@ -1,6 +1,11 @@
 <!-- Serial -->
 <div class="form-group {{ $errors->has('serial') ? ' has-error' : '' }}">
-    <label for="{{ $fieldname }}" class="col-md-3 control-label">{{ trans('admin/hardware/form.serial') }} </label>
+    <label for="{{ $fieldname }}" class="col-md-3 control-label">
+        {{ trans('admin/hardware/form.serial') }}
+        @if(isset($tooltip_text))
+            @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => $tooltip_text])
+        @endif
+    </label>
     <div class="col-md-7 col-sm-12">
         <input class="form-control" type="text" name="{{ $fieldname }}" id="{{ $fieldname }}" value="{{ old((isset($old_val_name) ? $old_val_name : $fieldname), $item->serial) }}" {{  (Helper::checkIfRequired($item, 'serial') || ($item->model && $item->model->require_serial)) ? ' required' : '' }} maxlength="191" />
         @error($old_val_name ?? $fieldname)

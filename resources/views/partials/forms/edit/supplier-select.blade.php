@@ -1,6 +1,11 @@
 <div id="assigned_user" class="form-group{{ $errors->has($fieldname) ? ' has-error' : '' }}">
 
-    <label for="{{ $fieldname }}" class="col-md-3 control-label">{{ $translated_name }}</label>
+    <label for="{{ $fieldname }}" class="col-md-3 control-label">
+        {{ $translated_name }}
+        @if(isset($tooltip_text))
+            @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => $tooltip_text])
+        @endif
+    </label>
 
     <div class="col-md-7">
         <select class="js-data-ajax" data-endpoint="suppliers" data-placeholder="{{ trans('general.select_supplier') }}" name="{{ $fieldname }}" style="width: 100%" id="supplier_select" aria-label="{{ $fieldname }}"{{ (isset($multiple) && ($multiple=='true')) ? " multiple='multiple'" : '' }}{{ (isset($item) && (Helper::checkIfRequired($item, $fieldname))) ? ' required' : '' }}>

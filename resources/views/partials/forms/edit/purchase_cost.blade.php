@@ -1,6 +1,9 @@
 <!-- Purchase Cost -->
 <div class="form-group {{ $errors->has('purchase_cost') ? ' has-error' : '' }}">
-    <label for="purchase_cost" class="col-md-3 control-label">{{ $unit_cost ?? trans('general.purchase_cost') }}</label>
+    <label for="purchase_cost" class="col-md-3 control-label">
+        {{ $unit_cost ?? trans('general.purchase_cost') }}
+        @include('partials.forms.edit.tooltip-icon', ['tooltip_text' => trans('admin/field_help.asset.purchase_cost')])
+    </label>
     <div class="col-md-9">
         <div class="input-group col-md-5" style="padding-left: 0px;">
             <input class="form-control" type="number" name="purchase_cost" min="0.00" max="99999999999999999.000" step="0.001" aria-label="purchase_cost" id="purchase_cost" value="{{ old('purchase_cost', $item->purchase_cost) }}" maxlength="25" />
